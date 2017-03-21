@@ -28,6 +28,77 @@ app.use(function(req, res, next) {
 // log all requests to the console
 app.use(morgan('dev'));
 
+
+app.get('/', function (req, res) {
+    res.send('This is Polar\'s Home Page');
+
+});
+
+var polarApirRouter = express.Router();
+
+polarApirRouter.route('/users')
+
+    .post(function(req, res) {
+         
+
+    });
+
+
+polarApirRouter.route('/users/:userid')
+
+    .get(function(req, res) {
+
+
+
+    })
+
+    .put(function(req, res) {
+
+
+    })
+
+    .delete(function(req, res) {
+
+
+    });
+
+
+polarApirRouter.route('/users/:userid/notes') 
+    
+    .get(function(req, res) {
+
+
+    })
+
+    .post(function(req, res) {
+
+
+    });
+
+
+polarApirRouter.route('/users/:userid/notes/:noteid') 
+
+    .get(function(req, res) {
+
+
+    })
+
+    .post(function(req, res) {
+
+
+    })
+
+
+    .delete(function(req, res) {
+
+
+    });
+
+
+
+
+
+
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/public'));
