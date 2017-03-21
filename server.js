@@ -9,6 +9,9 @@ var morgan      = require('morgan');        // used to see requests
 var mongoose    = require('mongoose');      // for working with our database
 var config      = require('./config');
 var path        = require('path');
+var passport    = require('passport');
+var session     = require('express-session');
+var flash       = require('connect-flash');
 
 // APP CONFIGURATION =====================
 // =======================================
@@ -34,6 +37,17 @@ mongoose.connect(config.database);
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname, '/public/app/views'));
+
+app.set('view engine', 'ejs'); // set up ejs for templating
+
+// required for passport
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+require('./passport')(passport);
 
 // ROUTES FOR OUR API ====================
 // =======================================
@@ -42,20 +56,16 @@ app.use(express.static(__dirname + '/public'));
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
+require('./app/routes/passportRoutes')(app, passport);
+
 // MAIN CATCHALL ROUTE -------------------
 // SEND USERS TO FRONTEND ----------------
 // has to be registered after API routes
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
-});
+//app.get('*', function(req, res) {
+//  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+//});
 
 // START THE SERVER
 // =======================================
 app.listen(config.port);
 console.log('Server started on port ' + config.port);
-
-
-app.get('/', function (req, res) {
-    res.send('This is Polar\'s Home Page');
-
-});

@@ -11,13 +11,13 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        User.findOne({'id': id}, function(err, user) {
             done(err, user);
         });
     });
 
     passport.use(new GoogleStrategy({
-        clientId: configAuth.googleAuth.clientId,
+        clientID        : configAuth.googleAuth.clientId,
         clientSecret    : configAuth.googleAuth.clientSecret,
         callbackURL     : configAuth.googleAuth.callbackURL
     },
