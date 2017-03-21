@@ -14,6 +14,8 @@ module.exports = function(app, express) {
         user.name = req.body.name; 
         user.username = req.body.username; 
         user.password = req.body.password
+    
+        res.json({ message: 'User created!' });
     });
 
 
