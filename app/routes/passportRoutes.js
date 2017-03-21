@@ -19,8 +19,9 @@ module.exports = function(app, passport) {
 
     // route for logging out
     app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+        req.session.destroy(function (err) {
+            res.redirect('/');
+        });
     });
 
     // facebook routes

@@ -28,7 +28,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
             // try to find the user based on their google id
-            User.findOne({ 'google.id' : profile.id }, function(err, user) {
+            User.findOne({ 'id' : profile.id }, function(err, user) {
                 if (err)
                     return done(err);
 
