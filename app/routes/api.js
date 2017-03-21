@@ -14,7 +14,7 @@ module.exports = function(app, express) {
     });
 
 
-  apiRouter.route('/users/:userid')
+  apiRouter.route('/users/:user_id')
 
     .get(function(req, res) {
 
@@ -33,7 +33,7 @@ module.exports = function(app, express) {
     });
 
 
-  apiRouter.route('/users/:userid/notes')
+  apiRouter.route('/users/:user_id/notes')
 
     .get(function(req, res) {
 
@@ -46,7 +46,7 @@ module.exports = function(app, express) {
     });
 
 
-  apiRouter.route('/users/:userid/notes/:noteid')
+  apiRouter.route('/users/:user_id/notes/:note_id')
 
     .get(function(req, res) {
 
