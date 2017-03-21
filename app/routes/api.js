@@ -79,11 +79,35 @@ module.exports = function(app, express) {
   apiRouter.route('/users/:user_id/notes')
 
     .get(function(req, res) {
+      
+       User.findById(req.params.user_id, function(err, user) {
+                    if (err) return res.send(err);
+                    // return that user
+                    res.json(user.notes);
+        });
+
 
 
     })
 
     .post(function(req, res) {
+      
+        var note = new Note();
+        note.title = req.title; 
+        note.markdownBody = req.markdownBody; 
+        
+        note.save(function(err) {
+            if (err) {
+                //duplicate entry
+                if (err.code == 11000) 
+                    return res.json({ success: false, message: 'you already have a ntoe with that name'});
+                else 
+                    return res.send(err); 
+                }
+
+                //return a message
+                res.json({ message: 'Note created!'}); 
+        });          
 
 
     });
