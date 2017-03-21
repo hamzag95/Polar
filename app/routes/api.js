@@ -10,7 +10,10 @@ module.exports = function(app, express) {
   apiRouter.route('/users')
 
     .post(function(req, res) {
-
+        var user = new User(); 
+        user.name = req.body.name; 
+        user.username = req.body.username; 
+        user.password = req.body.password
     });
 
 
