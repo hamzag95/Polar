@@ -116,6 +116,11 @@ module.exports = function(app, express) {
   apiRouter.route('/users/:user_id/notes/:note_id')
 
     .get(function(req, res) {
+      User.findById(req.params.user_id, function(err, user) {
+                    if (err) return res.send(err);
+                    // return that user
+                    res.json(user);
+        });
 
 
     })
