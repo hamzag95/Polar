@@ -4,7 +4,7 @@ var config     = require('../../config');
 
 var superSecret = config.secret;
 
-module.exports = function(app, express) {
+module.exports = function(app, express, passport) {
   var apiRouter = express.Router();
 
   apiRouter.route('/users')
@@ -15,6 +15,8 @@ module.exports = function(app, express) {
         user.username = req.body.username;
         user.password = req.body.password;
         user.notes = null;
+
+        user.save
 
         res.json({ message: 'User created!' });
     });
