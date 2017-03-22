@@ -1,136 +1,120 @@
 var bodyParser = require('body-parser'); 	// get body-parser
+var Note       = require('./../models/note');
+var User       = require('./../models/user');
 var jwt        = require('jsonwebtoken');
 var config     = require('../../config');
-var User        = require('../models/user');
-//var express    = require('express');
+var express    = require('express');
 var superSecret = config.secret;
 
 module.exports = function(app, express, passport) {
-  var apiRouter = express.Router();
+    var apiRouter = express.Router();
 
-  apiRouter.route('/users')
-    .post(function(req, res) {
-        var user = new User();
+/*
+    apiRouter.use(function(req, res, next) {
+        // if user is authenticated in the session, carry on
+        if (req.isAuthenticated())
+            return next();
 
-        user.name = req.body.name;
-        user.username = req.body.username;
-        user.password = req.body.password;
-        //user.notes = null;
-
-        user.save(function(err) {
-            if (err) {
-                //duplicate entry
-                if (err.code == 11000)
-                    return res.json({ success: false, message: 'A user with that username already exists.'});
-                else
-                    return res.send(err);
-                }
-
-                //return a message
-                res.json({ message: 'User created!'});
+        res.status(403).send({
+            success: false,
+            message: 'Failed to authenticate token.'
         });
-
-    });
-
-
-  apiRouter.route('/users/:user_id')
-
-    .get(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
-                    if (err) return res.send(err);
-                    // return that user
-                    res.json(user);
-        });
-
     })
+    */
 
-    .put(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
+    apiRouter.route('/users/:user_id')
 
-        if (err) return res.send(err);
+        .get(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+                        if (err) return res.send(err);
+                        // return that user
+                        res.json(user);
+            });
 
-        //set the new user information if it exists in the request
-        if (req.body.name) user.name = req.body.name;
-        if (req.body.username) user.username = req.body.username;
-        if (req.body.password) user.password = req.body.password;
-
-        //save the user
-        user.save(function(err) {
-            if (err) return res.send(err);
-
-            //return a message
-            res.json({ message: 'User updated!' });
-        });
-     })
-
-    })
-
-    .delete(function(req, res) {
-        User.remove({
-            _id: req.params.user_id
-            }, function(err, user) {
-                if (err) return res.send(err);
-
-                res.json({ message: 'Successfully deleted' });
         })
 
-    });
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
 
+            if (err) return res.send(err);
 
-  apiRouter.route('/users/:user_id/notes')
+            //set the new user information if it exists in the request
+            if (req.body.name) user.name = req.body.name;
+            if (req.body.username) user.username = req.body.username;
+            if (req.body.password) user.password = req.body.password;
 
-    .get(function(req, res) {
+            //save the user
+            user.save(function(err) {
+                if (err) return res.send(err);
 
-       User.findById(req.params.user_id, function(err, user) {
+                //return a message
+                res.json({ message: 'User updated!' });
+            });
+         })
+
+        })
+
+        .delete(function(req, res) {
+            User.remove({
+                _id: req.params.user_id
+                }, function(err, user) {
                     if (err) return res.send(err);
-                    // return that user
-                    res.json(user.notes);
+
+                    res.json({ message: 'Successfully deleted' });
+            })
         });
 
+    apiRouter.route('/users/:user_id/notes')
+
+        .get(function(req, res) {
+
+            User.findById(req.params.user_id, function(err, user) {
+                        if (err) return res.send(err);
+                        // return that user
+                        res.json(user.notes);
+            });
 
 
-    })
 
-    .post(function(req, res) {
+        })
 
-        var note = new Note();
-        note.title = req.title;
-        note.markdownBody = req.markdownBody;
+        .post(function(req, res) {
 
-        note.save(function(err) {
-            if (err) {
-                //duplicate entry
-                if (err.code == 11000)
-                    return res.json({ success: false, message: 'you already have a ntoe with that name'});
-                else
+            var note = new Note();
+
+            note.title = req.body.title;
+            note.markdownBody = req.body.markdownBody;
+            note.author = req.params.user_id;
+
+            note.save(function(err) {
+                if (err) {
                     return res.send(err);
                 }
 
                 //return a message
-                res.json({ message: 'Note created!'});
+                return res.json({ message: 'Note created!!', title: req.body.title, body: req.markdownBody });
+            });
+
+
         });
 
 
-    });
-
-
-  apiRouter.route('/users/:user_id/notes/:note_id')
+    apiRouter.route('/users/:user_id/notes/:note_id')
 
     .get(function(req, res) {
-      User.findById(req.params.user_id, function(err, user) {
+        User.findById(req.params.user_id, function(err, user) {
                     if (err) return res.send(err);
                     // return that user
                     res.json(user);
+
+
         });
-
-
     })
 
     .post(function(req, res) {
 
 
     })
-
 
     .delete(function(req, res) {
 

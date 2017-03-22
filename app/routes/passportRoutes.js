@@ -1,10 +1,5 @@
 module.exports = function(app, passport) {
 
-    // route for home page
-    app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
-    });
-
     // route for login form
     // route for processing the login form
     // route for signup form
