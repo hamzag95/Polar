@@ -68,14 +68,12 @@ module.exports = function(app, express, passport) {
 
         .get(function(req, res) {
 
-            User.findById(req.params.user_id, function(err, user) {
-                        if (err) return res.send(err);
-                        // return that user
-                        res.json(user.notes);
+            Note.find({ author: req.params.user_id }, function(err, notes) {
+                if (err) res.send(err);
+
+				// return the users
+				res.json(notes);
             });
-
-
-
         })
 
         .post(function(req, res) {
