@@ -120,12 +120,19 @@ module.exports = function(app, express, passport) {
 
         .post(function(req, res) {
 
-
         })
 
         .delete(function(req, res) {
-
-
+            var id = req.params.id;
+            console.log("THE ID " + id);
+            //Note.findOne({ _id:id }).remove().exec();
+            Note.remove({
+                id: id
+            }, function(err, note) {
+                if (err)
+                    res.send(err);
+                res.json({message: 'Success'});
+            });
         });
 
     return apiRouter;
