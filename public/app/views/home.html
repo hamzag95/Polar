@@ -35,6 +35,15 @@
     	<script src="app/app.js"></script>
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
+        
+         <div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
+             <h3><center><span class  ="blue-grey-text text-lighten-5">Polar</span></center></h3>
+             <div align = "right" >
+                <p>Please <a href="/auth/google" target="_self">Login</a></p>
+            </div>
+             
+        </div>
+        
         <div class="" ng-if="checkLoggedIn">
             <div class="row">
                 <div class="col xl2" id="sidebar">
@@ -62,11 +71,7 @@
 
         </div>
 
-        <div ng-if="!checkLoggedIn">
-            <div class="container" id="loginContainer">
-                <h3>Please <a href="/auth/google" target="_self">Login</a></h3>
-            </div>
-        </div>
+        
 
     </body>
 </html>
