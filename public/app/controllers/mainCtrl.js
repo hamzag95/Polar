@@ -14,15 +14,20 @@ angular.module('mainCtrl', [])
         console.log($scope.data);
     });
 
-    vm.loggedIn = function() {
+    var testFunction = function() {
         return $http.get('/auth/loggedin/').then(function(data) {
+            console.log("hello");
+            console.log(data['loggedIn']);
             if (data['loggedIn'] == true) {
+                console.log(data['loggedIn']);
                 return true;
             } else {
                 return false;
             }
         });
     };
+
+    vm.loggedIn = testFunction(); 
 
     vm.user = Note.getUser();
 
