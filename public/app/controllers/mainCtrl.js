@@ -15,11 +15,10 @@ angular.module('mainCtrl', [])
     });
 
     var testFunction = function() {
-        return $http.get('/auth/loggedin/').then(function(data) {
-            console.log("hello");
-            console.log(data['loggedIn']);
-            if (data['loggedIn'] == true) {
-                console.log(data['loggedIn']);
+        $http.get('/auth/loggedin/').then(function(data) {
+            var loginState = data['data']['loggedIn'];
+            console.log(loginState);
+            if (loginState) {
                 return true;
             } else {
                 return false;
