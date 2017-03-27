@@ -74,6 +74,12 @@ textarea {
 #logo-text{
     text-align: center;
     padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 50px;
+    
+}
+
+#horLine{
+    padding-top: 20px;
     
 }
