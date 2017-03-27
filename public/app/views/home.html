@@ -30,22 +30,28 @@
     	<script src="app/app.js"></script>
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
+        <div ng-if="checkLoggedIn">
+            <div class="row">
+                <div class="col xl2" id="sidebar">
+                    <label><input ng-model="searchText" placeholder="Search"></label>
+                    <table id="searchTextResults">
+                        <tr ng-repeat="note in allNotes | filter:searchText">
+                            <td>{{note.title}}</td>
 
-        <div class="row">
-            <div class="col xl2" id="sidebar">
-                <label><input ng-model="searchText" placeholder="Search"></label>
-                <table id="searchTextResults">
-                    <tr ng-repeat="note in allNotes | filter:searchText">
-                        <td>{{note.title}}</td>
+                        </tr>
+                    </table>
+                </div>
 
-                    </tr>
-                </table>
             </div>
 
+            <div class="" id="user-info">
+                <p>Welcome, {{ user.name }}!</p>
+            </div>
         </div>
 
-        <p ng-if="checkLoggedIn">You are logged in</p>
-        <p ng-if="!checkLoggedIn">Not logged in</p>
+        <div ng-if="!checkLoggedIn">
+            Please login
+        </div>
 
     </body>
 </html>
