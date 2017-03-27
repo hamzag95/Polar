@@ -5,12 +5,6 @@ angular.module('noteService', [])
     // create a new object
     var noteFactory = {};
 
-    noteFactory.isLoggedIn = function() {
-        $http.get('/auth/loggedin/').then(function(data) {
-            return true;
-        });
-    };
-
     noteFactory.getUser = function() {
         return $http.get('/api/users/');
     };
