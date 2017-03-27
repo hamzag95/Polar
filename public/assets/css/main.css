@@ -51,10 +51,16 @@ td {
 }
 
 textarea {
+    padding: 10px;
     border: none;
     resize: none;
     outline: none;
     height: 100%;
+}
+
+input[type='text'] {
+    padding: 10px;
+    font-size: 2em;
 }
 
 .row {

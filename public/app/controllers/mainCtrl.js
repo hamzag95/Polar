@@ -25,6 +25,7 @@ angular.module('mainCtrl', [])
     };
 
     $scope.$watch('currentNote.markdownBody', debounceSaveUpdates);
+    $scope.$watch('currentNote.title', debounceSaveUpdates);
 
     $scope.selectNote = function(note) {
         $scope.currentNote.title = note.title;
