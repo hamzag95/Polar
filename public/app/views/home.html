@@ -10,6 +10,9 @@
     	<!-- CSS  -->
     	<!-- load bootstrap from CDN and custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+
 
     	<!-- JS -->
     	<!-- load angular and angular-route via CDN -->
@@ -30,13 +33,13 @@
     	<script src="app/app.js"></script>
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
-        <div ng-if="checkLoggedIn">
+        <div class="" ng-if="checkLoggedIn">
             <div class="row">
                 <div class="col xl2" id="sidebar">
                     <label><input ng-model="searchText" placeholder="Search"></label>
                     <table id="searchTextResults">
                         <tr ng-repeat="note in allNotes | filter:searchText">
-                            <td>{{note.title}}</td>
+                            <td ng-click="">{{note.title}}</td>
 
                         </tr>
                     </table>
@@ -44,13 +47,19 @@
 
             </div>
 
-            <div class="" id="user-info">
-                <p>Welcome, {{ user.name }}!</p>
+            <div class="row">
+                <div class="col xl2" id="user-info">
+                    <p>Hello, {{ user.name }}!</p>
+                    <a href="/logout" target="_self" class="">Logout</a>
+                </div>
             </div>
+
         </div>
 
         <div ng-if="!checkLoggedIn">
-            Please login
+            <div class="container" id="loginContainer">
+                <h3>Please <a href="/auth/google" target="_self">Login</a></h3>
+            </div>
         </div>
 
     </body>
