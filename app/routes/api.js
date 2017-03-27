@@ -22,10 +22,14 @@ module.exports = function(app, express, passport) {
     })
     */
 
+    apiRouter.get('/users/', function(req, res) {
+        return res.json(req.user);
+    });
+
     apiRouter.route('/users/:user_id')
 
         .get(function(req, res) {
-            User.findById(req.params.user_id, function(err, user) {
+            User.findOne({ 'id' : req.params.user_id }, function(err, user) {
                         if (err) return res.send(err);
                         // return that user
                         res.json(user);
@@ -34,24 +38,23 @@ module.exports = function(app, express, passport) {
         })
 
         .put(function(req, res) {
-            User.findById(req.params.user_id, function(err, user) {
+            User.findOne({ 'id' : req.params.user_id }, function(err, user) {
 
-            if (err) return res.send(err);
-
-            //set the new user information if it exists in the request
-            if (req.body.name) user.name = req.body.name;
-            if (req.body.username) user.username = req.body.username;
-            if (req.body.password) user.password = req.body.password;
-
-            //save the user
-            user.save(function(err) {
                 if (err) return res.send(err);
 
-                //return a message
-                res.json({ message: 'User updated!' });
-            });
-         })
+                //set the new user information if it exists in the request
+                if (req.body.name) user.name = req.body.name;
+                if (req.body.username) user.username = req.body.username;
+                if (req.body.password) user.password = req.body.password;
 
+                //save the user
+                user.save(function(err) {
+                    if (err) return res.send(err);
+
+                    //return a message
+                    res.json({ message: 'User updated!' });
+                });
+            })
         })
 
         .delete(function(req, res) {
@@ -66,6 +69,7 @@ module.exports = function(app, express, passport) {
 
     apiRouter.route('/users/:user_id/notes')
 
+        // Get all of a user's notes
         .get(function(req, res) {
 
             Note.find({ author: req.params.user_id }, function(err, notes) {
@@ -76,6 +80,7 @@ module.exports = function(app, express, passport) {
             });
         })
 
+        // Create a new note
         .post(function(req, res) {
 
             var note = new Note();
@@ -84,13 +89,14 @@ module.exports = function(app, express, passport) {
             note.markdownBody = req.body.markdownBody;
             note.author = req.params.user_id;
 
+
             note.save(function(err) {
                 if (err) {
                     return res.send(err);
                 }
 
                 //return a message
-                return res.json({ message: 'Note created!!', title: req.body.title, body: req.markdownBody });
+                return res.json({ message: 'Note created' });
             });
 
 
@@ -99,25 +105,28 @@ module.exports = function(app, express, passport) {
 
     apiRouter.route('/users/:user_id/notes/:note_id')
 
-    .get(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
-                    if (err) return res.send(err);
-                    // return that user
-                    res.json(user);
+        .get(function(req, res) {
+            Note.findById(req.params.note_id, function(err, note) {
+                        if (err) return res.send(err);
+
+                        if (req.user != null && req.user.id == note.author) {
+                            // return that note
+                            res.json(note);
+                        } else {
+                            res.json({ message: "You don't have access to this note" });
+                        }
+            });
+        })
+
+        .post(function(req, res) {
+
+
+        })
+
+        .delete(function(req, res) {
 
 
         });
-    })
-
-    .post(function(req, res) {
-
-
-    })
-
-    .delete(function(req, res) {
-
-
-    });
 
     return apiRouter;
 }

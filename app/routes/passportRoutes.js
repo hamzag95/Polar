@@ -37,6 +37,14 @@ module.exports = function(app, passport) {
                     failureRedirect : '/'
             }));
 
+    app.get('/auth/loggedin', function(req, res) {
+        if (req.isAuthenticated()) {
+            res.json({ loggedIn: true });
+        } else {
+            res.json({ loggedIn: false });
+        }
+    });
+
 };
 
 // route middleware to make sure a user is logged in

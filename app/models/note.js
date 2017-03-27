@@ -5,7 +5,7 @@ var User = require('./user');
 var noteSchema = new Schema ({
     title: String,
     tags: [String],
-    author: {type: Schema.Types.ObjectId, ref: 'User'},
+    author: String,
     markdownBody: String,
     htmlBody: String
 });

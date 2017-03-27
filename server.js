@@ -61,8 +61,12 @@ require('./app/routes/passportRoutes')(app, passport);
 // MAIN CATCHALL ROUTE -------------------
 // SEND USERS TO FRONTEND ----------------
 // has to be registered after API routes
-// route for home page
 app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/app/views/home.html'));
+});
+
+// route for home page
+app.get('/index', function(req, res) {
     res.render('index.ejs'); // load the index.ejs file
 });
 
