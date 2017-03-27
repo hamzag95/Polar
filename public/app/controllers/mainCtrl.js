@@ -7,11 +7,15 @@ angular.module('mainCtrl', [])
     $scope.checkLoggedIn = false;
     $scope.allNotes = [];
     $scope.user = {};
+    $scope.currentNote = "";
+
+    $scope.selectNote = function(text) {
+        $scope.currentNote = text;
+    };
 
     var testFunction = function() {
         $http.get('/auth/loggedin/').then(function(data) {
             var loginState = data['data']['loggedIn'];
-            console.log(loginState);
             if (loginState) {
                 $scope.checkLoggedIn = true;
                 return true;
