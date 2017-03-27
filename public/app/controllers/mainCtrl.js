@@ -1,16 +1,36 @@
 angular.module('mainCtrl', [])
 
-.controller('mainController', ['$scope', '$http', '$rootScope', '$location', 'Note', function($scope, $http, $rootScope, $location, Note) {
+.controller('mainController', ['$scope', '$http', '$rootScope', '$location', '$timeout', 'Note', function($scope, $http, $rootScope, $location, $timeout, Note) {
 
     var vm = this;
 
     $scope.checkLoggedIn = false;
     $scope.allNotes = [];
     $scope.user = {};
-    $scope.currentNote = "";
+    $scope.currentNote = {};
+    var timeout = null;
 
-    $scope.selectNote = function(text) {
-        $scope.currentNote = text;
+    var saveUpdates = function() {
+        $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id, { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody });
+    };
+
+    var debounceSaveUpdates = function(newVal, oldVal) {
+        if (newVal != oldVal) {
+            if (timeout) {
+                $timeout.cancel(timeout)
+            }
+
+            timeout = $timeout(saveUpdates, 500);
+        }
+    };
+
+    $scope.$watch('currentNote.markdownBody', debounceSaveUpdates);
+
+    $scope.selectNote = function(note) {
+        $scope.currentNote.title = note.title;
+        $scope.currentNote._id = note._id;
+        $scope.currentNote.author = note.author;
+        $scope.currentNote.markdownBody = note.markdownBody;
     };
 
     var testFunction = function() {

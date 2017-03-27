@@ -50,14 +50,14 @@
                     <label><input ng-model="searchText" placeholder="Search"></label>
                     <table id="searchTextResults">
                         <tr ng-repeat="note in allNotes | filter:searchText">
-                            <td ng-click="selectNote(note.markdownBody)"><p>{{note.title}}</p></td>
+                            <td ng-click="selectNote(note)"><p>{{note.title}}</p></td>
 
                         </tr>
                     </table>
                 </div>
 
                 <div class="col xl10" id="editor">
-                    <textarea name="name" rows="8" cols="80" ng-model="currentNote"></textarea>
+                    <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody"></textarea>
                 </div>
 
             </div>

@@ -17,7 +17,7 @@ html, body {
 
 #sidebar {
     height: 92vh;
-    border-right: 2px solid #e7e7e7;
+    border-right: 2px solid #F7F6F5;
 }
 
 td {
@@ -25,11 +25,12 @@ td {
 }
 
 #user-info {
+    border-top: 1px solid #e7e7e7;
     position:fixed;
     left:0px;
     bottom:0px;
     height: 8vh;
-    background: #e7e7e7;
+    background: #F7F6F5;
     padding-left: 20px;
 }
 
