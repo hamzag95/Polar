@@ -55,3 +55,25 @@ textarea {
 .row {
     margin-bottom: 0px;
 }
+
+#snowflake {
+    display: block;
+    margin: auto;
+    width: 10%;
+    padding-top: 100px;
+}
+
+#logo{
+    text-align: center;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 80px;
+    
+}
+
+#logo-text{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 50px;
+    
+}

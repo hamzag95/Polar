@@ -23,6 +23,7 @@
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+        <script type="text/javascript" src="assets/js/scripts.js"></script>
 
     	<!-- controllers -->
     	<script src="app/controllers/mainCtrl.js"></script>
@@ -36,13 +37,41 @@
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
         
-         <div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
+         <!--<div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
+             <center><img src = "assets\img\63341.jpg"></center>
              <h3><center><span class  ="blue-grey-text text-lighten-5">Polar</span></center></h3>
              <div align = "right" >
                 <p>Please <a href="/auth/google" target="_self">Login</a></p>
             </div>
              
+        </div>-->
+        
+        
+        <div class="container">
+            <div class="row">
+                    <img src="assets\img\63341.jpg" class="img-responsive" id="snowflake">
+            </div>
         </div>
+        
+       <div class="container">
+            <div class="row">
+                <h1 id="logo"> POLAR </h1>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h3 id="logo-text"> Take notes flawlessly ... </h3>
+            </div>
+        </div>  
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="/auth/google" target="_self" class="btn"> Login </a>
+                </div>
+            </div>
+        </div> 
         
         <div class="" ng-if="checkLoggedIn">
             <div class="row">
