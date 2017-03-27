@@ -37,6 +37,7 @@
     	<script src="app/app.js"></script>
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
+
         
          <!--<div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
              <center><img src = "assets\img\63341.jpg"></center>
@@ -138,22 +139,30 @@
                 
             </div>
             
+
+         <div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
+             <h3><center><span class="blue-grey-text text-lighten-5">Polar</span></center></h3>
+             <div align = "right" >
+                <p>Please <a href="/auth/google" target="_self">Login</a></p>
+            </div>
+
         </div>
-        
+
         <div class="" ng-if="checkLoggedIn">
             <div class="row">
                 <div class="col xl2" id="sidebar">
                     <label><input ng-model="searchText" placeholder="Search"></label>
                     <table id="searchTextResults">
                         <tr ng-repeat="note in allNotes | filter:searchText">
-                            <td ng-click="selectNote(note.markdownBody)"><p>{{note.title}}</p></td>
+                            <td ng-click="selectNote(note)"><p>{{note.title}}</p></td>
 
                         </tr>
                     </table>
                 </div>
 
                 <div class="col xl10" id="editor">
-                    <textarea name="name" rows="8" cols="80" ng-model="currentNote"></textarea>
+                    <input type="text" name="" value="" ng-model="currentNote.title">
+                    <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody"></textarea>
                 </div>
 
             </div>
@@ -167,7 +176,7 @@
 
         </div>
 
-        
+
 
     </body>
 </html>

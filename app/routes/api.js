@@ -106,19 +106,28 @@ module.exports = function(app, express, passport) {
 
         .get(function(req, res) {
             Note.findById(req.params.note_id, function(err, note) {
-                        if (err) return res.send(err);
+                if (err) res.send(err);
 
-                        if (req.user != null && req.user.id == note.author) {
-                            // return that note
-                            res.json(note);
-                        } else {
-                            res.json({ message: "You don't have access to this note" });
-                        }
+                if (req.user != null && req.user.id == note.author) {
+                    // return that note
+                    res.json(note);
+                } else {
+                    res.json({ message: "You don't have access to this note" });
+                }
             });
         })
 
-        .post(function(req, res) {
+        .put(function(req, res) {
+            Note.findById(req.params.note_id, function(err, note) {
+                if (err) res.send(err);
 
+                if (req.user != null && req.user.id == note.author) {
+                    if (req.body.title) note.title = req.body.title;
+                    if (req.body.markdownBody) note.markdownBody = req.body.markdownBody;
+
+                    note.save();
+                }
+            })
         })
 
         .delete(function(req, res) {
