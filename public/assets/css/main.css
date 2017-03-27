@@ -20,6 +20,10 @@ html, body {
     border-right: 2px solid #e7e7e7;
 }
 
+td {
+    border-top: 1px solid #e7e7e7;
+}
+
 #user-info {
     position:fixed;
     left:0px;
