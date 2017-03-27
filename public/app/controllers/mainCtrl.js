@@ -5,6 +5,7 @@ angular.module('mainCtrl', [])
     var vm = this;
 
     $scope.checkLoggedIn = false;
+    $scope.allNotes = [];
 
     var testFunction = function() {
         $http.get('/auth/loggedin/').then(function(data) {
@@ -24,13 +25,18 @@ angular.module('mainCtrl', [])
 
     vm.user = Note.getUser();
 
+
+
     var getNotes = function() {
         $http.get('/api/users').then(function(data) {
             var id = data['data']['id'];
 
-            console.log(id);
-        })
-    }
+            $http.get('/api/users/' + id + "/notes").then(function(data) {
+                $scope.allNotes = data['data'];
+                return data['data'];
+            });
+        });
+    };
 
     vm.getNotes = getNotes();
 

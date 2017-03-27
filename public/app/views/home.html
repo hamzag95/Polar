@@ -32,6 +32,8 @@
         <p ng-if="checkLoggedIn">You are logged in</p>
         <p ng-if="!checkLoggedIn">Not logged in</p>
 
-        <p>notes</p>
+        <p ng-repeat="note in allNotes">
+            {{ note.title }}
+        </p>
     </body>
 </html>
