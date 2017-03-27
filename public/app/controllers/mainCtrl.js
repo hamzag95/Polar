@@ -4,29 +4,23 @@ angular.module('mainCtrl', [])
 
     var vm = this;
 
-    $scope.checkLoggedIn = function() {
-        $http.get('/auth/loggedin/').then(function(data) {
-            $scope.data = data;
-        });
-    };
-
-    $scope.$watch('data', function() {
-        console.log($scope.data);
-    });
+    $scope.checkLoggedIn = false;
 
     var testFunction = function() {
         $http.get('/auth/loggedin/').then(function(data) {
             var loginState = data['data']['loggedIn'];
             console.log(loginState);
             if (loginState) {
+                $scope.checkLoggedIn = true;
                 return true;
             } else {
+                $scope.checkLoggedIn = false;
                 return false;
             }
         });
     };
 
-    vm.loggedIn = testFunction(); 
+    vm.loggedIn = testFunction();
 
     vm.user = Note.getUser();
 

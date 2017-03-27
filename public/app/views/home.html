@@ -28,8 +28,8 @@
     	<script src="app/app.routes.js"></script>
     	<script src="app/app.js"></script>
     </head>
-    <body ng-app="polarApp" ng-controller="mainController as main">
-        <p ng-if="main.loggedIn">You are logged in</p>
-        <p ng-if="!main.loggedIn">Not logged in</p>
+    <body ng-app="polarApp" ng-controller="mainController">
+        <p ng-if="checkLoggedIn">You are logged in</p>
+        <p ng-if="!checkLoggedIn">Not logged in</p>
     </body>
 </html>
