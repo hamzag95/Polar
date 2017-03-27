@@ -28,12 +28,26 @@
     	<script src="app/app.routes.js"></script>
     	<script src="app/app.js"></script>
     </head>
-    <body ng-app="polarApp" ng-controller="mainController">
+    <body ng-app="polarApp" ng-controller="mainController as main">
         <p ng-if="checkLoggedIn">You are logged in</p>
         <p ng-if="!checkLoggedIn">Not logged in</p>
 
+        <!--
         <p ng-repeat="note in allNotes">
             {{ note.title }}
         </p>
+    -->
+        
+       
+        
+        <label>Search: <input ng-model="searchText"></label>
+            <table id="searchTextResults">
+                <tr><th>Notes</th></tr>
+                <tr ng-repeat="note in allNotes | filter:searchText">
+                    <td>{{note.title}}</td>
+                    
+                </tr>
+            </table>
+        
     </body>
 </html>
