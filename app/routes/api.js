@@ -23,7 +23,7 @@ module.exports = function(app, express, passport) {
     */
 
     apiRouter.get('/users/', function(req, res) {
-        return res.json(req.user);
+        res.json(req.user);
     });
 
     apiRouter.route('/users/:user_id')

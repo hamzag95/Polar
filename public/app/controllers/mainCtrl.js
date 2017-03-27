@@ -24,5 +24,15 @@ angular.module('mainCtrl', [])
 
     vm.user = Note.getUser();
 
+    var getNotes = function() {
+        $http.get('/api/users').then(function(data) {
+            var id = data['data']['id'];
+
+            console.log(id);
+        })
+    }
+
+    vm.getNotes = getNotes();
+
     //vm.allNotes = Note.getAllNotes(vm.user.id);
 }]);
