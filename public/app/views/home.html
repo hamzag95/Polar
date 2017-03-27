@@ -11,8 +11,10 @@
     	<!-- load bootstrap from CDN and custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
 
+        <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:100');
+        </style>
 
     	<!-- JS -->
     	<!-- load angular and angular-route via CDN -->
@@ -39,10 +41,14 @@
                     <label><input ng-model="searchText" placeholder="Search"></label>
                     <table id="searchTextResults">
                         <tr ng-repeat="note in allNotes | filter:searchText">
-                            <td ng-click="">{{note.title}}</td>
+                            <td ng-click="selectNote(note._id)"><p>{{note.title}}</p></td>
 
                         </tr>
                     </table>
+                </div>
+
+                <div class="col xl10" id="editor">
+                    <textarea name="name" rows="8" cols="80"></textarea>
                 </div>
 
             </div>

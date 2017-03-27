@@ -1,9 +1,18 @@
-body {
-  min-height: 100%;
+html, body {
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: 'Roboto', serif;
-  color: #4A4A4A;
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
 }
 
 #sidebar {
@@ -28,4 +37,21 @@ body {
 
 #loginContainer {
     text-align: center;
+}
+
+#editor {
+    margin: 0px;
+    padding: 0px;
+    height: 99vh;
+}
+
+textarea {
+    border: none;
+    resize: none;
+    outline: none;
+    height: 100%;
+}
+
+.row {
+    margin-bottom: 0px;
 }
