@@ -14,17 +14,26 @@ angular.module('mainCtrl', [])
     var saveUpdates = function() {
         console.log("saveUpdates");
         $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id,
-        { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(function(data) {console.log("success")}, function(err) { console.log(err); });
+        { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(
+            function(data) {
+                console.log("new title: " + data['data']['newTitle']);
 
-        getNotes();
+                for (i = 0; i < $scope.allNotes.length; i++) {
 
-        /*
-        for (i = 0; i < $scope.allNotes.length; i++) {
-            if ($scope.allNotes[i]._id == $scope.currentNote._id) {
-                $scope.allNotes[i].title = $scope.currentNote.title;
-            }
-        }
-        */
+                    if ($scope.allNotes[i]._id == $scope.currentNote._id) {
+                        $scope.allNotes[i].title = data['data']['newTitle'];
+                    }
+
+                    //console.log($scope.allNotes[i].title);
+                }
+            }, function(err) {
+                console.log(err);
+            });
+
+        //$scope.$apply();
+
+        //getNotes();
+
     };
 
     var debounceSaveUpdates = function(newVal, oldVal) {
@@ -33,7 +42,7 @@ angular.module('mainCtrl', [])
                 $timeout.cancel(timeout)
             }
 
-            timeout = $timeout(saveUpdates, 10000);
+            timeout = $timeout(saveUpdates, 1000);
         }
     };
 

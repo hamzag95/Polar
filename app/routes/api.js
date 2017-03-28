@@ -101,7 +101,7 @@ module.exports = function(app, express, passport) {
 
 
         });
-    
+
     apiRouter.route('/users/:user_id/notes/:note_id')
 
         .get(function(req, res) {
@@ -126,8 +126,14 @@ module.exports = function(app, express, passport) {
                     if (req.body.title) note.title = req.body.title;
                     if (req.body.markdownBody) note.markdownBody = req.body.markdownBody;
 
-                    note.save();
-                    console.log("updated note")
+                    note.save(function(err) {
+                        if (err) {
+                            return res.send(err);
+                        } else {
+                            return res.json({ newTitle: req.body.title, newBody: req.body.markdownBody });
+                        }
+                    });
+                    //console.log("updated note");
                 }
             })
         })

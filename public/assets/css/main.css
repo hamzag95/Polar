@@ -59,8 +59,11 @@ textarea {
     height: 90%;
 }
 
+input {
+    width:98%
+}
+
 input[type='text'] {
-    width:98%;
     padding: 10px;
     margin-left: 5px;
     margin-right: 6px;
