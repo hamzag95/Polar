@@ -11,6 +11,7 @@
     	<!-- load bootstrap from CDN and custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
         <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto:100');
@@ -23,6 +24,7 @@
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+        <script type="text/javascript" src="assets/js/scripts.js"></script>
 
     	<!-- controllers -->
     	<script src="app/controllers/mainCtrl.js"></script>
@@ -36,13 +38,108 @@
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
 
-         <div ng-if="!checkLoggedIn" class= "card-panel red lighten-2">
-             <h3><center><span class="blue-grey-text text-lighten-5">Polar</span></center></h3>
-             <div align = "right" >
-                <p>Please <a href="/auth/google" target="_self">Login</a></p>
+        
+         <div ng-if="!checkLoggedIn">
+             
+             <div class="container">
+                <div class="row">
+                        <img src="assets\img\63341.jpg" class="img-responsive" id="snowflake">
+                </div>
             </div>
 
+           <div class="container">
+                <div class="row">
+                    <h1 id="logo"> POLAR </h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <h3 id="logo-text"> Take notes flawlessly ... </h3>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="center"> 
+                    <a href="/auth/google" target="_self" class="waves-effect btn-large hoverable red accent-2"> Login </a>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row" id="horLine">
+                    <h3>Features</h3>
+                </div>
+                <div class="row">
+                    <div class="col l6 m12 s 12">
+                        <div class="card medium blue lighten-2 z-depth-2">
+                            <div class="card-content white-text">
+                                <h3 class="center-align">
+                                    <i class="fa fa-folder-open-o fa-3x" aria-hidden="true"></i>
+                                </h3>
+                                <div class="divider"></div>
+                                <span class="card-title">Organize</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat tristique, posuere mi sed, iaculis eros. Sed feugiat pulvinar ultrices. Fusce lacus ex, condimentum nec cursus sit amet, laoreet vitae enim. Phasellus vitae nibh et quam ultricies rhoncus. Quisque et luctus diam, ut lobortis nunc.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col l6 m12 s 12">
+                        <div class="card medium light-blue darken-3 z-depth-2">
+                            <div class="card-content white-text">
+                                <h3 class="center-align">
+                                    <i class="fa fa-share-alt fa-3x" aria-hidden="true"></i>
+                                </h3>
+                                <div class="divider"></div>
+                                <span class="card-title">Share</span>
+                                <p>Nullam non nulla ultricies, euismod massa in, dignissim dui. Praesent ultrices ante lorem, ut pulvinar purus lacinia non. Fusce commodo ullamcorper turpis, vel rhoncus odio lacinia non. Fusce vestibulum tincidunt pulvinar. Pellentesque suscipit ultricies scelerisque. Nam maximus libero ligula. </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col l6 m12 s 12">
+                        <div class="card  medium light-blue darken-3 z-depth-2">
+                            <div class="card-content white-text">
+                                <h3 class="center-align">
+                                    <i class="fa fa-calculator fa-3x" aria-hidden="true"></i>
+                                </h3>
+                                <div class="divider"></div>
+                                <span class="card-title">Calculate</span>
+                                <p>Nullam non nulla ultricies, euismod massa in, dignissim dui. Praesent ultrices ante lorem, ut pulvinar purus lacinia non. Fusce commodo ullamcorper turpis, vel rhoncus odio lacinia non. Fusce vestibulum tincidunt pulvinar. Pellentesque suscipit ultricies scelerisque. Nam maximus libero ligula.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col l6 m12 s 12">
+                        <div class="card medium blue lighten-2 z-depth-2">
+                            <div class="card-content white-text">
+                                <h3 class="center-align">
+                                    <i class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+                                </h3>
+                                <div class="divider"></div>
+                                <span class="card-title">Plan</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in erat tristique, posuere mi sed, iaculis eros. Sed feugiat pulvinar ultrices. Fusce lacus ex, condimentum nec cursus sit amet, laoreet vitae enim. Phasellus vitae nibh et quam ultricies rhoncus. Quisque et luctus diam, ut lobortis nunc.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>             
+             
+             <!--<center><img src = "assets\img\63341.jpg"></center>
+             <h3><center><span class  ="blue-grey-text text-lighten-5">Polar</span></center></h3>
+             <div align = "right" >
+                <p>Please <a href="/auth/google" target="_self">Login</a></p>
+            </div>-->
+             
         </div>
+    </div>
+            
 
         <div class="" ng-if="checkLoggedIn">
             <div class="row">

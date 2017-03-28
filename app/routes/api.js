@@ -101,8 +101,7 @@ module.exports = function(app, express, passport) {
 
 
         });
-
-
+    
     apiRouter.route('/users/:user_id/notes/:note_id')
 
         .get(function(req, res) {
@@ -129,12 +128,19 @@ module.exports = function(app, express, passport) {
                     note.save();
                 }
             })
-
         })
 
         .delete(function(req, res) {
-
-
+            var id = req.params.note_id;
+            console.log("THE ID " + id);
+            //Note.findOne({ _id:id }).remove().exec();
+            Note.remove({
+                _id: id
+            }, function(err, note) {
+                if (err)
+                    res.send(err);
+                res.json({message: 'Success'});
+            });
         });
 
     return apiRouter;
