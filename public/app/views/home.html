@@ -56,9 +56,9 @@
                     </table>
                 </div>
 
-                <div class="col xl10" id="editor">
-                    <input type="text" name="" value="" ng-model="currentNote.title">
-                    <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody"></textarea>
+                <div class="col xl10" id="editor" ng-if="noteSelected">
+                    <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
+                    <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody" placeholder="Body"></textarea>
                 </div>
 
             </div>

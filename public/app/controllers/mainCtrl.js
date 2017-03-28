@@ -8,10 +8,23 @@ angular.module('mainCtrl', [])
     $scope.allNotes = [];
     $scope.user = {};
     $scope.currentNote = {};
+    $scope.noteSelected = false;
     var timeout = null;
 
     var saveUpdates = function() {
-        $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id, { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody });
+        console.log("saveUpdates");
+        $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id,
+        { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(function(data) {console.log("success")}, function(err) { console.log(err); });
+
+        getNotes();
+
+        /*
+        for (i = 0; i < $scope.allNotes.length; i++) {
+            if ($scope.allNotes[i]._id == $scope.currentNote._id) {
+                $scope.allNotes[i].title = $scope.currentNote.title;
+            }
+        }
+        */
     };
 
     var debounceSaveUpdates = function(newVal, oldVal) {
@@ -20,7 +33,7 @@ angular.module('mainCtrl', [])
                 $timeout.cancel(timeout)
             }
 
-            timeout = $timeout(saveUpdates, 500);
+            timeout = $timeout(saveUpdates, 10000);
         }
     };
 
@@ -32,6 +45,8 @@ angular.module('mainCtrl', [])
         $scope.currentNote._id = note._id;
         $scope.currentNote.author = note.author;
         $scope.currentNote.markdownBody = note.markdownBody;
+
+        $scope.noteSelected = true;
     };
 
     var testFunction = function() {
@@ -63,7 +78,8 @@ angular.module('mainCtrl', [])
 
             $http.get('/api/users/' + id + "/notes").then(function(data) {
                 $scope.allNotes = data['data'];
-                return data['data'];
+
+                //return data['data'];
             });
         });
     };

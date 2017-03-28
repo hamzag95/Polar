@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  padding: 0;
+  padding: 0px;;
   margin: 0;
   font-family: 'Roboto', serif;
   -webkit-animation-delay: 0.1s;
@@ -52,17 +52,25 @@ td {
 
 textarea {
     padding: 10px;
+    margin: 0px;;
     border: none;
     resize: none;
     outline: none;
-    height: 100%;
+    height: 90%;
 }
 
 input[type='text'] {
+    width:98%;
     padding: 10px;
+    margin-left: 5px;
+    margin-right: 6px;
     font-size: 2em;
 }
 
 .row {
     margin-bottom: 0px;
+}
+
+input[type='text']:focus {
+    border-bottom: 5px solid #FF7373;
 }

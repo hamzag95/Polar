@@ -113,6 +113,7 @@ module.exports = function(app, express, passport) {
                     // return that note
                     res.json(note);
                 } else {
+                    console.log("error getting note")
                     res.json({ message: "You don't have access to this note" });
                 }
             });
@@ -127,6 +128,7 @@ module.exports = function(app, express, passport) {
                     if (req.body.markdownBody) note.markdownBody = req.body.markdownBody;
 
                     note.save();
+                    console.log("updated note")
                 }
             })
 
