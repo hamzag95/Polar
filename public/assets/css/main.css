@@ -74,3 +74,31 @@ input[type='text'] {
 input[type='text']:focus {
     border-bottom: 5px solid #FF7373;
 }
+
+#snowflake {
+    display: block;
+    margin: auto;
+    width: 10%;
+    padding-top: 100px;
+}
+
+#logo{
+    text-align: center;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 80px;
+
+}
+
+#logo-text{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 50px;
+
+}
+
+#horLine{
+    padding-top: 20px;
+
+}
