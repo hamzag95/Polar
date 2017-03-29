@@ -12,12 +12,9 @@ angular.module('mainCtrl', [])
     var timeout = null;
 
     var saveUpdates = function() {
-        console.log("saveUpdates");
         $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id,
         { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(
             function(data) {
-                console.log("new title: " + data['data']['newTitle']);
-
                 for (i = 0; i < $scope.allNotes.length; i++) {
 
                     if ($scope.allNotes[i]._id == $scope.currentNote._id) {
@@ -94,6 +91,21 @@ angular.module('mainCtrl', [])
     };
 
     vm.getNotes = getNotes();
+
+    $scope.newNote = function() {
+        $http.post('/api/users/' + $scope.user.id + '/notes/', { title: "New Note", markdownBody: "", user_id: $scope.user.id }).then(
+            function(data) {
+                $scope.currentNote.title = data['data']['title'];
+                $scope.currentNote._id = data['data']['_id'];
+                $scope.currentNote.author = data['data']['author'];
+                $scope.currentNote.markdownBody = data['data']['markdownBody'];
+
+                $scope.noteSelected = true;
+                $scope.allNotes.push(data['data']);
+                //$scope.selectNote(data['data']);
+            }
+        );
+    };
 
     //vm.allNotes = Note.getAllNotes(vm.user.id);
 }]);

@@ -96,7 +96,7 @@ module.exports = function(app, express, passport) {
                 }
 
                 //return a message
-                return res.json({ message: 'Note created' });
+                return res.json(note);
             });
 
 
