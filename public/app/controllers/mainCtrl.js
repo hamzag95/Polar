@@ -40,7 +40,7 @@ angular.module('mainCtrl', [])
                 $timeout.cancel(timeout)
             }
 
-            timeout = $timeout(saveUpdates, 1000);
+            timeout = $timeout(saveUpdates, 750);
         }
     };
 
