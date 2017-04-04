@@ -108,5 +108,22 @@ angular.module('mainCtrl', [])
         );
     };
 
+    
+
+    $scope.deleteNote = function () {
+        $http.delete('api/users' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
+            function(data) {
+                $scope.currentNote.title = null;
+                $scope.currentNote._id = null;
+                $scope.currentNote.author = null;
+                $scope.currentNote.markdownBody = null;
+                $scope.noteSelected = false;
+
+    });
+        
+       
+       console.log($scope.currentNote);
+   }
+
     //vm.allNotes = Note.getAllNotes(vm.user.id);
 }]);
