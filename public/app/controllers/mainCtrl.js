@@ -111,13 +111,15 @@ angular.module('mainCtrl', [])
     
 
     $scope.deleteNote = function () {
-        $http.delete('api/users' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
+        $http.delete('api/users/' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
             function(data) {
-                $scope.currentNote.title = null;
-                $scope.currentNote._id = null;
-                $scope.currentNote.author = null;
-                $scope.currentNote.markdownBody = null;
+                //$scope.currentNote.title = null;
+                //$scope.currentNote._id = null;
+                //$scope.currentNote.author = null;
+                //$scope.currentNote.markdownBody = null;
                 $scope.noteSelected = false;
+                $scope.allNotes.pop($scope.currentNote._id);
+                
 
     });
         
