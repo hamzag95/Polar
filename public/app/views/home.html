@@ -158,7 +158,6 @@
                     <span>
                         <label><input ng-model="searchText" placeholder="Search"></label>
                         <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
-                        <a id="dltNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="deleteNote();"><i class="material-icons">delete</i></a>
                     </span>
 
                     <table id="searchTextResults">
@@ -182,6 +181,7 @@
                             <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
                             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
                             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                            <li><a id="dltNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="deleteNote();"><i class="material-icons">delete</i></a></li>
                         </ul>
                     </div>
 
