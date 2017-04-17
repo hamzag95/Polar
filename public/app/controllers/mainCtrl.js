@@ -111,18 +111,31 @@ angular.module('mainCtrl', [])
 
 
     $scope.deleteNote = function () {
-        $http.delete('/api/users' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
-            function(data) {
-                $scope.currentNote.title = null;
-                $scope.currentNote._id = null;
-                $scope.currentNote.author = null;
-                $scope.currentNote.markdownBody = null;
+
+        $http.delete('api/users/' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
+            function(response) {
+                //$scope.currentNote.title = null;
+                //$scope.currentNote._id = null;
+                //$scope.currentNote.author = null;
+                //$scope.currentNote.markdownBody = null;
                 $scope.noteSelected = false;
 
-    });
-
-
+                var index = findNote($scope.currentNote._id);
+                
+                console.log("index : " + index);
+                $scope.allNotes.splice(index, 1);
+            });
        console.log($scope.currentNote);
+   }
+
+   var findNote = function(noteId) {
+       for (i = 0; i < $scope.allNotes.length; i++) {
+           if ($scope.allNotes[i]._id == noteId) {
+               return i;
+           }
+       }
+
+       return -1;
    }
 
     //vm.allNotes = Note.getAllNotes(vm.user.id);
