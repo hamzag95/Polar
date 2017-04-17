@@ -108,10 +108,10 @@ angular.module('mainCtrl', [])
         );
     };
 
-    
+
 
     $scope.deleteNote = function () {
-        $http.delete('api/users' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
+        $http.delete('/api/users' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
             function(data) {
                 $scope.currentNote.title = null;
                 $scope.currentNote._id = null;
@@ -120,8 +120,8 @@ angular.module('mainCtrl', [])
                 $scope.noteSelected = false;
 
     });
-        
-       
+
+
        console.log($scope.currentNote);
    }
 
