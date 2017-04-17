@@ -112,14 +112,16 @@ angular.module('mainCtrl', [])
 
     $scope.deleteNote = function () {
         $http.delete('api/users/' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
-            function(data) {
+            function(response) {
                 //$scope.currentNote.title = null;
                 //$scope.currentNote._id = null;
                 //$scope.currentNote.author = null;
                 //$scope.currentNote.markdownBody = null;
-                $scope.noteSelected = false;
-                $scope.allNotes.pop($scope.currentNote._id);
                 
+                $scope.noteSelected = false;
+                var index = $scope.allNotes.indexOf($scope.currentNote);
+                console.log("ID IS THIS: " + response.data + " INDEX IS: " + index);
+                $scope.allNotes.splice(index, 1);                
 
     });
         

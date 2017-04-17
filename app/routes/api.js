@@ -140,7 +140,7 @@ module.exports = function(app, express, passport) {
 
         .delete(function(req, res) {
             var id = req.params.note_id;
-            console.log("THE ID " + id);
+            //console.log("THE ID " + id);
             //Note.findOne({ _id:id }).remove().exec();
             Note.remove({
                 _id: id
