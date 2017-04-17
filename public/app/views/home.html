@@ -22,9 +22,12 @@
     	<!-- load angular and angular-route via CDN -->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-sanitize.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+
+        <script src="app/directive.js"></script>
 
     	<!-- controllers -->
     	<script src="app/controllers/mainCtrl.js"></script>
@@ -155,7 +158,7 @@
                     <span>
                         <label><input ng-model="searchText" placeholder="Search"></label>
                         <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
-                    <a id="dltNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="deleteNote();"><i     class="material-icons">delete</i></a>
+                        <a id="dltNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="deleteNote();"><i class="material-icons">delete</i></a>
                     </span>
 
                     <table id="searchTextResults">
@@ -167,8 +170,22 @@
 
                 <div class="col xl10" id="editor" ng-if="noteSelected">
                     <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
-                    
-                    <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody" placeholder="Body"></textarea>
+
+                    <div class="" contenteditable="true" ng-model="currentNote.markdownBody"></div>
+
+                    <div class="fixed-action-btn horizontal click-to-toggle">
+                        <a class="btn-floating btn-large red">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <ul>
+                            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody" placeholder="Body"></textarea> -->
                 </div>
 
             </div>

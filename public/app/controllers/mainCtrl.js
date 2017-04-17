@@ -22,16 +22,10 @@ angular.module('mainCtrl', [])
                         $scope.allNotes[i].title = data['data']['newTitle'];
                         $scope.allNotes[i].markdownBody = data['data']['newBody'];
                     }
-
-                    //console.log($scope.allNotes[i].title);
                 }
             }, function(err) {
                 console.log(err);
             });
-
-        //$scope.$apply();
-
-        //getNotes();
 
     };
 
@@ -119,7 +113,7 @@ angular.module('mainCtrl', [])
                 //$scope.currentNote._id = null;
                 //$scope.currentNote.author = null;
                 //$scope.currentNote.markdownBody = null;
-                
+
                 $scope.noteSelected = false;
 
                 var index = findNote($scope.currentNote._id);
