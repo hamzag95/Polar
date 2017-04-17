@@ -25,7 +25,6 @@
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
-        <script type="text/javascript" src="assets/js/scripts.js"></script>
 
     	<!-- controllers -->
     	<script src="app/controllers/mainCtrl.js"></script>
@@ -168,6 +167,7 @@
 
                 <div class="col xl10" id="editor" ng-if="noteSelected">
                     <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
+                    
                     <textarea name="name" rows="8" cols="80" ng-model="currentNote.markdownBody" placeholder="Body"></textarea>
                 </div>
 

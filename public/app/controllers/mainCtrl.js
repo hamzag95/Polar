@@ -40,7 +40,7 @@ angular.module('mainCtrl', [])
                 $timeout.cancel(timeout)
             }
 
-            timeout = $timeout(saveUpdates, 1000);
+            timeout = $timeout(saveUpdates, 250);
         }
     };
 
@@ -108,9 +108,10 @@ angular.module('mainCtrl', [])
         );
     };
 
-    
+
 
     $scope.deleteNote = function () {
+        if($scope.noteSelected == false) return;
         $http.delete('api/users/' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
             function(response) {
                 //$scope.currentNote.title = null;
@@ -119,14 +120,23 @@ angular.module('mainCtrl', [])
                 //$scope.currentNote.markdownBody = null;
                 
                 $scope.noteSelected = false;
-                var index = $scope.allNotes.indexOf($scope.currentNote);
-                console.log("ID IS THIS: " + response.data + " INDEX IS: " + index);
-                $scope.allNotes.splice(index, 1);                
 
-    });
-        
-       
+                var index = findNote($scope.currentNote._id);
+                
+                console.log("index : " + index);
+                $scope.allNotes.splice(index, 1);
+            });
        console.log($scope.currentNote);
+   }
+
+   var findNote = function(noteId) {
+       for (i = 0; i < $scope.allNotes.length; i++) {
+           if ($scope.allNotes[i]._id == noteId) {
+               return i;
+           }
+       }
+
+       return -1;
    }
 
     //vm.allNotes = Note.getAllNotes(vm.user.id);
