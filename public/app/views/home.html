@@ -177,7 +177,7 @@
                             <i class="material-icons">menu</i>
                         </a>
                         <ul>
-                            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                            <li><a class="btn-floating red" href="#" onclick="getPos();"><i class="material-icons">insert_chart</i></a></li>
                             <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
                             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
                             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
@@ -199,7 +199,19 @@
 
         </div>
 
+        <script>
+        function getPos() {
+            var sel = document.getSelection(),
+            nd = sel.anchorNode,
+            text = nd.parentElement.innerHTML;
 
+            nd.parentElement.innerHTML = "<h3>" + text + "</h3>";
+            console.log(sel);
+
+            var line=text.split("<").length;
+            var col=text.split("\n").pop().length;
+        }
+        </script>
 
     </body>
 </html>
