@@ -6,6 +6,6 @@ module.exports = {
   'googleAuth': {
     'clientId' : '739786731369-6bsi41obshkjhu2r4p9cr455mjfdr75r.apps.googleusercontent.com',
     'clientSecret' : 'YPJpKTTwt96xgMdaAopiSBLg',
-    'callbackURL' : 'http://localhost:8080/auth/google/callback'
+    'callbackURL' : 'https://infinite-badlands-82811.herokuapp.com/oauth2/callback'
   }
 };
