@@ -73,4 +73,7 @@ app.get('/index', function(req, res) {
 
 // START THE SERVER
 // =======================================
-app.listen(process.env.PORT || 8080);
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
+    console.log("App is running on port " + port);
+});
