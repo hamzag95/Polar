@@ -3,5 +3,5 @@ angular.module('polarApp', [
   'app.routes',
   'mainCtrl',
   'noteService',
-  'customControl'
+  'simplemde'
 ]);

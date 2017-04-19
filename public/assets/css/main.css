@@ -68,6 +68,10 @@ textarea {
     height: 90%;
 }
 
+.CodeMirror {
+	height: 100%;
+}
+
 input {
     width:98%
 }
