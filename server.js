@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 app.use(morgan('dev'));
 
 // connect to our database
-mongoose.connect(config.database);
+mongoose.connect(process.env.DATABASE || config.database);
 
 // set static files location
 // used for requests that our frontend will make
@@ -73,5 +73,4 @@ app.get('/index', function(req, res) {
 
 // START THE SERVER
 // =======================================
-app.listen(config.port);
-console.log('Server started on port ' + config.port);
+app.listen(process.env.PORT || 8080);

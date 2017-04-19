@@ -3,6 +3,10 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = require('./app/models/user')
 var configAuth = require('./config');
 
+var id = process.env.clientID || configAuth.googleAuth.clientId;
+var secret = process.env.clientSecret || configAuth.googleAuth.clientSecret;
+var callback = process.env.callbackURL || configAuth.googleAuth.callbackURL;
+
 module.exports = function(passport) {
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
@@ -17,9 +21,9 @@ module.exports = function(passport) {
     });
 
     passport.use(new GoogleStrategy({
-        clientID        : configAuth.googleAuth.clientId,
-        clientSecret    : configAuth.googleAuth.clientSecret,
-        callbackURL     : configAuth.googleAuth.callbackURL
+        clientID        : id,
+        clientSecret    : secret,
+        callbackURL     : callback
     },
     function(token, refreshToken, profile, done) {
 
