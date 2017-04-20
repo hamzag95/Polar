@@ -89,8 +89,9 @@ angular.module('mainCtrl', [])
     vm.getNotes = getNotes();
 
     $scope.newNote = function() {
-        $http.post('/api/users/' + $scope.user.id + '/notes/', { title: "New Note", markdownBody: "", user_id: $scope.user.id }).then(
+        $http.post('/api/users/' + $scope.user.id + '/notes/', { title: "New Note", markdownBody: "Body", user_id: $scope.user.id }).then(
             function(data) {
+                console.log(data);
                 $scope.currentNote.title = data['data']['title'];
                 $scope.currentNote._id = data['data']['_id'];
                 $scope.currentNote.author = data['data']['author'];
