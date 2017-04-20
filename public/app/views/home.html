@@ -164,7 +164,7 @@
 
         <div class="" ng-show="checkLoggedIn">
             <div class="row">
-                <div class="col xl2" id="sidebar">
+                <div class="col l2" id="sidebar">
                     <span>
                         <label><input ng-model="searchText" placeholder="Search"></label>
                         <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
@@ -195,7 +195,7 @@
                         </ul>
                     </div>
 
-                    <textarea simplemde='{ autofocus: true, spellChecker: false, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
+                    <textarea id="editor" simplemde='{ autofocus: true, spellChecker: false, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
                 </div>
 
             </div>

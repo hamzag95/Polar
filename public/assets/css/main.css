@@ -31,6 +31,7 @@ label {
 
 td {
     border-top: 1px solid #e7e7e7;
+    padding:2%;
 }
 
 #user-info {
@@ -59,29 +60,20 @@ td {
     height: 99vh;
 }
 
-textarea {
-    padding: 10px;
-    margin: 0px;;
-    border: none;
-    resize: none;
-    outline: none;
-    height: 90%;
-}
-
 .CodeMirror {
 	height: 100%;
     border: none;
 }
 
-input {
-    width:98%
+input[type='text'] {
+    width: 98%;
+    padding: 1%;
+    margin-bottom: 0;
+    font-size: 2em;
 }
 
-input[type='text'] {
-    padding: 10px;
-    margin-left: 5px;
-    margin-right: 6px;
-    font-size: 2em;
+input {
+    width:90%;
 }
 
 .row {
@@ -118,4 +110,8 @@ input[type='text']:focus {
 #horLine{
     padding-top: 20px;
 
+}
+
+.editor-statusbar {
+    display: none;
 }
