@@ -11,6 +11,10 @@ angular.module('app.routes', ['ngRoute'])
 
         .when('/auth/google/', {
 
+        })
+
+        .when('/random', {
+            templateUrl: 'app/views/random.html'
         });
 
     $locationProvider.html5Mode(true);

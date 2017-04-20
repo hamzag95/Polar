@@ -63,12 +63,16 @@ require('./app/routes/passportRoutes')(app, passport);
 // SEND USERS TO FRONTEND ----------------
 // has to be registered after API routes
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/public/app/views/home.html'));
+    res.sendFile(path.join(__dirname + '/public/app/views/home.html'));
 });
 
 // route for home page
 app.get('/index', function(req, res) {
     res.render('index.ejs'); // load the index.ejs file
+});
+
+app.get('/random', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/app/views/random.html'));
 });
 
 // START THE SERVER

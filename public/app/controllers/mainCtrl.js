@@ -135,5 +135,12 @@ angular.module('mainCtrl', [])
        return -1;
    }
 
+   $scope.randomVal = 0;
+
+   $scope.generate = function() {
+       var range = parseInt($scope.range);
+       $scope.randomVal = Math.floor(Math.random() * (range/2)) + 1;
+   }
+
     //vm.allNotes = Note.getAllNotes(vm.user.id);
 }]);
