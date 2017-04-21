@@ -12,6 +12,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
+          <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
         <style>
@@ -48,6 +49,21 @@
     	<!-- main Angular app files -->
     	<script src="app/app.routes.js"></script>
     	<script src="app/app.js"></script>
+
+      <script src="assets/js/typed.js"></script>
+      <script type="text/javascript">
+        $(function(){
+          $(".type").typed({
+            strings: [
+                "Take notes flawlessly",
+                "Organize your life",
+                "Look its typing"
+
+            ]
+          })
+        })
+      </script>
+
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
 
@@ -68,7 +84,7 @@
 
             <div class="container">
                 <div class="row">
-                    <h3 id="logo-text"> Take notes </h3>
+                    <h3 align="center" class="type"></h3>
                 </div>
             </div>
 
