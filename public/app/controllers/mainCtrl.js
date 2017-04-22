@@ -110,10 +110,6 @@ angular.module('mainCtrl', [])
         if($scope.noteSelected == false) return;
         $http.delete('api/users/' + $scope.user.id + '/notes/' +  $scope.currentNote._id).then(
             function(response) {
-                //$scope.currentNote.title = null;
-                //$scope.currentNote._id = null;
-                //$scope.currentNote.author = null;
-                //$scope.currentNote.markdownBody = null;
 
                 $scope.noteSelected = false;
 

@@ -171,7 +171,7 @@
                     </span>
 
                     <table id="searchTextResults">
-                        <tr ng-repeat="note in allNotes | filter:searchText">
+                        <tr ng-repeat="note in allNotes | filter:searchText" ng-class="{selected: note._id === currentNote._id}">
                             <td ng-click="selectNote(note)"><p>{{note.title}}</p></td>
                         </tr>
                     </table>

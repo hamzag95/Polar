@@ -32,6 +32,8 @@ label {
 td {
     border-top: 1px solid #e7e7e7;
     padding:2%;
+    cursor: pointer;
+    cursor: hand;
 }
 
 #user-info {
@@ -114,4 +116,8 @@ input[type='text']:focus {
 
 .editor-statusbar {
     display: none;
+}
+
+.selected {
+    background-color: #f6f6f6;
 }
