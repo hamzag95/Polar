@@ -7,7 +7,6 @@ var UserSchema = new Schema ({
     email        : String,
     name         : { type: String, unique: false },
     notes        : [{type: Schema.Types.ObjectId, ref: 'Note'}]
-
 });
 
 module.exports = mongoose.model('User', UserSchema);

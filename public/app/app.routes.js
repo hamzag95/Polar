@@ -9,10 +9,6 @@ angular.module('app.routes', ['ngRoute'])
             templateUrl: 'app/views/home.html'
         })
 
-        .when('/auth/google/', {
-
-        })
-
         .when('/random', {
             templateUrl: 'app/views/random.html'
         });
