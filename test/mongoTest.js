@@ -27,12 +27,45 @@ describe('db Users', function() {
 
       user.save(done);
       console.log(user)
-
+        
+     //User.findOne({'id' : 'testing123'})
+        
         });
 
     it('find user', function(done) {
-      console.log(user);
-      assert.equal('testing123', user.find(user).id;
+      
+      /*User.findOne({ 'id' : 'testing123' }, function(err, user) {
+                if (err) console.log(); //return res.send(err);
+                // return that user
+                console.log("WE FOUND " + user);
+    });*/
+      User.findOne({ 'id' : 'testing123' }, function(err, user) {
+                if (err) return res.send(err);
+                // return that user
+                assert.true(user != null);
+    });
+
+      done();
+
+    });
+    
+        it('remove user', function(done) {
+        
+      User.remove({id: 'testing123'}, function(err, user) {
+                    //if (err) console.log("remove worked");
+                    //else console.log("remove failed");
+                    //res.json({ message: 'Successfully deleted' });
+          
+                    //assert.true(user == null);
+          
+            });
+            
+    User.findOne({ 'id' : 'testing123' }, function(err, user) {
+                if (err) return res.send(err);
+                // return that user
+                assert.true(user == null);
+    });
+
       done();
 
     });
