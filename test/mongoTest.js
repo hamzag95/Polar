@@ -2,6 +2,7 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var User   = require('./../app/models/user');
+var user;
 
 
 
@@ -18,8 +19,8 @@ describe('db Users', function() {
 });
 
 
-    it('puts users', function(done) {
-      var user = new User();
+    it('put users', function(done) {
+      user = new User();
       user.id = 'testing123';
       user.email = 'testing@polar.io';
       user.name = 'polarTest';
@@ -28,4 +29,12 @@ describe('db Users', function() {
       console.log(user)
 
         });
+
+    it('find user', function(done) {
+      console.log(user);
+      assert.equal('testing123', user.find(user).id;
+      done();
+
+    });
+
     });
