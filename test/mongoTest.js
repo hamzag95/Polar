@@ -25,7 +25,7 @@ describe('db Users', function() {
       user.email = 'testing@polar.io';
       user.name = 'polarTest';
 
-      user.save(done);
+      user.save(done());
       console.log(user)
         
      //User.findOne({'id' : 'testing123'})
@@ -34,18 +34,12 @@ describe('db Users', function() {
 
     it('find user', function(done) {
       
-      /*User.findOne({ 'id' : 'testing123' }, function(err, user) {
-                if (err) console.log(); //return res.send(err);
-                // return that user
-                console.log("WE FOUND " + user);
-    });*/
       User.findOne({ 'id' : 'testing123' }, function(err, user) {
                 if (err) return res.send(err);
                 // return that user
                 assert.true(user != null);
-    });
+    }, done());
 
-      done();
 
     });
     
@@ -64,9 +58,8 @@ describe('db Users', function() {
                 if (err) return res.send(err);
                 // return that user
                 assert.true(user == null);
-    });
+    }, done());
 
-      done();
 
     });
 
