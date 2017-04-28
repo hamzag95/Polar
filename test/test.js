@@ -1,25 +1,29 @@
-var db     = require('mocha-mongo')('mongodb://polar:pw456@ds137100.mlab.com:37100/polar');
-var User   = require('./../app/models/user');
+
 var expect = require('chai').expect;
+var request = require('request');
 
-var ready = db.ready();
+describe('Get User Info', function() {
+    var url = "http://localhost:8080/api/users/111054800999716037493";
 
-describe('polarDB', function () {
+    it('returns status 200', function(done) {
+        request(url, function(error, response, body) {
+            expect(response.statusCode).to.equal(200);
+            done();
+        });
+    });
 
-  before(function (done) {
-    mongoose.connect('mongodb://polar:pw456@ds137100.mlab.com:37100/polar', done);
-  });
+    it ('contains full name', function(done) {
+        request(url, function(error, response, body) {
+            expect(JSON.parse(body).name).to.equal('Max Wang');
+            done();
+        });
+    });
 
-  it('testing of the db', ready(function() {
-    var user = new User();
-    user.id = 'testing123';
-    user.email = 'testing@polar.io';
-    user.name = 'polarTest';
-
-    db.collection('users').insert(user);
-
-
-}));
-
+    it ('contains email', function(done) {
+        request(url, function(error, response, body) {
+            expect(JSON.parse(body).email).to.equal('maxwang051@gmail.com');
+            done();
+        });
+    });
 
 });
