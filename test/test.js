@@ -8,12 +8,13 @@ describe('Get User Info', function() {
     it('returns status 200', function(done) {
         request(url, function(error, response, body) {
             expect(response.statusCode).to.equal(200);
-           
+
         }, done());
     });
 
     it ('contains full name', function(done) {
         request(url, function(error, response, body) {
+
             expect(JSON.parse(body).name).to.equal('Max Wang');
         }, done());
     });

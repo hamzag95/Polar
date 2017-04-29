@@ -34,16 +34,12 @@ describe('db Users', function() {
 
     it('find user', function(done) {
       
-      /*User.findOne({ 'id' : 'testing123' }, function(err, user) {
-                if (err) console.log(); //return res.send(err);
-                // return that user
-                console.log("WE FOUND " + user);
-    });*/
       User.findOne({ 'id' : 'testing123' }, function(err, user) {
                 if (err) return res.send(err);
                 // return that user
                 assert.true(user != null);
     }, done());
+
 
     });
     
@@ -63,6 +59,7 @@ describe('db Users', function() {
                 // return that user
                 assert.true(user == null);
     }, done());
+
 
     });
 
