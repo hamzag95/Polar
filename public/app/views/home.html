@@ -203,7 +203,7 @@
         <div class="" ng-show="checkLoggedIn">
             <div class="row">
                 <div id="wrapper">
-                <div class="col l2" id="sidebar">
+                <div id="nav-mobile" class="col l2 side-nav fixed" style="transform: translateX(0%);">
                     <span>
                         <label><input ng-model="searchText" placeholder="Search"></label>
                         <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
@@ -217,6 +217,7 @@
                 </div>
                 </div>
 
+                <main>
                 <div class="col xl10" id="editor" ng-show="noteSelected">
                     <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
 
@@ -237,6 +238,7 @@
 
                     <textarea id="textArea" simplemde='{ autofocus: true, spellChecker: false, tabSize: 4, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
                 </div>
+                </main>
 
             </div>
 
