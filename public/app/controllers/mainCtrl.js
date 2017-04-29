@@ -20,7 +20,7 @@ angular.module('mainCtrl', [])
         var hasNumber = /\d/;
 
         for (var i = 0; i < splitString.length; i++) {
-            if (splitString[i].includes('=')) {
+            if (splitString[i].substring(0, 1) == '=') {
                 var total = 0;
                 for (var j = i - 1; j >= 0; j--) {
                     if (!hasNumber.test(splitString[j])) {
@@ -29,7 +29,9 @@ angular.module('mainCtrl', [])
                     total += parseInt(splitString[j].match(/\d+/)[0]);
                 }
 
-                splitString[i] = "= " + total;
+                if (total != 0) {
+                    splitString[i] = "= " + total;
+                }
                 console.log(splitString[i]);
             }
         }
