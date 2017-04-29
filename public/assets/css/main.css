@@ -15,9 +15,12 @@ html, body {
     to   { opacity: 1; }
 }
 
+
+
 #sidebar {
     height: 92vh;
     border-right: 2px solid #F7F6F5;
+    overflow: auto; 
 }
 
 label {
@@ -60,6 +63,14 @@ td {
     margin: 0px;
     padding: 0px;
     height: 99vh;
+    overflow: auto;
+}
+
+#textArea {
+    margin: 0px;
+    padding: 0px;
+    height: 99vh;
+    overflow: hidden;
 }
 
 .CodeMirror {

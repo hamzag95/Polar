@@ -202,6 +202,7 @@
 
         <div class="" ng-show="checkLoggedIn">
             <div class="row">
+                <div id="wrapper">
                 <div class="col l2" id="sidebar">
                     <span>
                         <label><input ng-model="searchText" placeholder="Search"></label>
@@ -213,6 +214,7 @@
                             <td ng-click="selectNote(note)"><p>{{note.title}}</p></td>
                         </tr>
                     </table>
+                </div>
                 </div>
 
                 <div class="col xl10" id="editor" ng-show="noteSelected">
@@ -233,7 +235,7 @@
                         </ul>
                     </div>
 
-                    <textarea id="editor" simplemde='{ autofocus: true, spellChecker: false, tabSize: 4, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
+                    <textarea id="textArea" simplemde='{ autofocus: true, spellChecker: false, tabSize: 4, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
                 </div>
 
             </div>
