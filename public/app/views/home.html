@@ -231,7 +231,8 @@
                             <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
                             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
                             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-                            <li><a id="dltNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="deleteNote();"><i class="material-icons">delete</i></a></li>
+                            <li><a id="dltNoteBtn" href="#modal2" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2"><i class="material-icons">delete</i></a></li>
+                            
                         </ul>
                     </div>
 
@@ -254,6 +255,16 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+                </div>
+            </div>
+            
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                  <h4>Are you sure you want to delete this note?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                  <a href="#!" ng-click="deleteNote();" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
                 </div>
             </div>
 
