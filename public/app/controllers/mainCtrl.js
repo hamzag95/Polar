@@ -24,6 +24,9 @@ angular.module('mainCtrl', [])
                     if ($scope.allNotes[i]._id == $scope.currentNote._id) {
                         $scope.allNotes[i].title = data['data']['newTitle'];
                         $scope.allNotes[i].markdownBody = data['data']['newBody'];
+
+                        // comment  
+
                     }
                 }
             }, function(err) {
