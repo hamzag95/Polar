@@ -14,7 +14,27 @@ angular.module('mainCtrl', [])
     var saveUpdates = function() {
         if ($scope.noteSelected == false) { return; }
 
-        console.log($scope.currentNote.markdownBody);
+        var splitString = $scope.currentNote.markdownBody.split('\n');
+        //console.log(splitString);
+
+        var hasNumber = /\d/;
+
+        for (var i = 0; i < splitString.length; i++) {
+            if (splitString[i].includes('=')) {
+                var total = 0;
+                for (var j = i - 1; j >= 0; j--) {
+                    if (!hasNumber.test(splitString[j])) {
+                        break;
+                    }
+                    total += parseInt(splitString[j].match(/\d+/)[0]);
+                }
+
+                splitString[i] = "= " + total;
+                console.log(splitString[i]);
+            }
+        }
+
+        $scope.currentNote.markdownBody = splitString.join('\n');
 
         $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id,
         { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(
@@ -25,7 +45,7 @@ angular.module('mainCtrl', [])
                         $scope.allNotes[i].title = data['data']['newTitle'];
                         $scope.allNotes[i].markdownBody = data['data']['newBody'];
 
-                        // comment  
+                        // comment
 
                     }
                 }
