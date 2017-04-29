@@ -26,7 +26,7 @@ angular.module('mainCtrl', [])
                     if (!hasNumber.test(splitString[j])) {
                         break;
                     }
-                    total += parseInt(splitString[j].match(/\d+/)[0]);
+                    total += parseFloat(splitString[j].match(/\d+(\.\d+)?|\.\d/g)[0]);
                 }
 
                 splitString[i] = "= " + total;
