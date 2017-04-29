@@ -7,7 +7,9 @@ var noteSchema = new Schema ({
     tags: [String],
     author: String,
     markdownBody: String,
-    htmlBody: String
+    htmlBody: String,
+    dateCreated: { type: Date, default: Date.now },
+    dateUpdated: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Note', noteSchema);

@@ -13,6 +13,9 @@ angular.module('mainCtrl', [])
 
     var saveUpdates = function() {
         if ($scope.noteSelected == false) { return; }
+
+        console.log($scope.currentNote.markdownBody);
+
         $http.put('/api/users/' + $scope.user.id + '/notes/' + $scope.currentNote._id,
         { title: $scope.currentNote.title, markdownBody: $scope.currentNote.markdownBody }).then(
             function(data) {
