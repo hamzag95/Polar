@@ -46,12 +46,11 @@ module.exports = function(app, express, passport) {
                 note.author.push(user.id);
               }
 
-                  res.json(note);
               note.save(function(err) {
                   if (err) {
                       return res.send(err);
                   } else {
-                      return res.json({ author : note.author });
+                      return res.json(note);
                   }
               });
 
