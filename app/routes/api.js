@@ -32,12 +32,27 @@ module.exports = function(app, express, passport) {
 
           Note.findOne( { _id: notec }, function(err, note) {
 
-              console.log(user.id);
-              note.author.push(user.id);
-              console.log(note.author[0]);
-              console.log(note.author[1]);
+              var there = false;
+              for (var s in note.author) {
+                if (user.id == s) {
+                  there = true;
+                }
 
-              res.json(note);
+              }
+
+              if (!there) {
+                note.author.push(user.id);
+              }
+
+                  res.json(note);
+              note.save(function(err) {
+                  if (err) {
+                      return res.send(err);
+                  } else {
+                      return res.json({ author : note.author });
+                  }
+              });
+
 
           });
 
