@@ -22,6 +22,31 @@ module.exports = function(app, express, passport) {
     })
     */
 
+    apiRouter.get('/users/:user_id/share', function(req,res) {
+        var friend = 'hamzag10@gmail.com'
+        var notec = '58fff5b621855b0011a6318b'
+        User.findOne( { 'email': friend}, function (err, user) {
+          if (err) return res.send(err);
+          // return that user
+
+
+          Note.findOne( { _id: notec }, function(err, note) {
+
+              console.log(user.id);
+              note.author.push(user.id);
+              console.log(note.author[0]);
+              console.log(note.author[1]);
+
+              res.json(note);
+
+          });
+
+        });
+
+
+
+    });
+
     apiRouter.get('/users/', function(req, res) {
         res.json(req.user);
     });
