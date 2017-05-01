@@ -57,3 +57,12 @@ nav {
 nav.top-nav a.page-title {
 
 }
+
+.nav-wrapper {
+}
+
+.brand-logo {
+    margin: auto;
+    font-size: 20px;
+    color: white;
+}
