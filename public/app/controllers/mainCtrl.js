@@ -11,8 +11,14 @@ angular.module('mainCtrl', [])
     $scope.noteSelected = false;
     var timeout = null;
 
+    setInterval(function(){
+        if($scope.checkLoggedIn){ 
+            saveUpdates();
+        }
+    }, 1000)
+    
     var saveUpdates = function() {
-        if ($scope.noteSelected == false) { return; }
+        //if ($scope.noteSelected == false) { return; }
 
         var splitString = $scope.currentNote.markdownBody.split('\n');
         //console.log(splitString);
@@ -46,7 +52,10 @@ angular.module('mainCtrl', [])
                     if ($scope.allNotes[i]._id == $scope.currentNote._id) {
                         $scope.allNotes[i].title = data['data']['newTitle'];
                         $scope.allNotes[i].markdownBody = data['data']['newBody'];
-
+                        //updateNote();
+                        getNotes();
+                        //$scope.currentNote.markdownBody = data['data']['newBody'];
+                        //$scope.currentNote.title = data['data']['newTitle'];
                         // comment
 
                     }
@@ -56,21 +65,28 @@ angular.module('mainCtrl', [])
             });
 
     };
-
+    
     var debounceSaveUpdates = function(newVal, oldVal) {
         if (newVal != oldVal) {
             if (timeout) {
                 $timeout.cancel(timeout)
             }
 
-            timeout = $timeout(saveUpdates, 250);
+            timeout = $timeout(saveUpdates, 0);
         }
     };
 
-    $scope.$watch('currentNote.markdownBody', debounceSaveUpdates);
-    $scope.$watch('currentNote.title', debounceSaveUpdates);
+    var test101 = function(){
+        console.log("IT FUCKING WORKS!")
+    }
+    
+    $scope.$watch('currentNote.markdownBody', saveUpdates);
+    $scope.$watch('currentNote.title', saveUpdates);
+    //$scope.$watch('noteSelected', saveUpdates);
+    $scope.$watch('allNotes', getNotes, true);
 
     $scope.selectNote = function(note) {
+        //getNotes();
         $scope.currentNote.title = note.title;
         $scope.currentNote._id = note._id;
         $scope.currentNote.author = note.author;
@@ -113,6 +129,18 @@ angular.module('mainCtrl', [])
             });
         });
     };
+    
+    /*var updateNote = function() {
+
+        var length = $scope.currentNote.author.length;
+        //var j = findNote($scope.currentNote._id);
+        for(var i = 0; i < length; i++){
+            $http.get('/api/users/' + $scope.currentNote.author[i].id + "/notes").then(function(data) {
+                $scope.allNotes = data['data'];
+            });           
+            
+        }
+    };*/
 
     vm.getNotes = getNotes();
 

@@ -149,12 +149,15 @@ module.exports = function(app, express, passport) {
             Note.findById(req.params.note_id, function(err, note) {
                 if (err) res.send(err);
 
-                if (req.user != null && req.user.id == note.author) {
-                    // return that note
-                    res.json(note);
-                } else {
-                    console.log("error getting note")
-                    res.json({ message: "You don't have access to this note" });
+                var length = note.author.length;
+                for(var i = 0; i < length; i++){
+                    if (req.user != null && req.user.id == note.author[i]) {
+                        // return that note
+                        res.json(note);
+                    } else {
+                        console.log("error getting note")
+                        res.json({ message: "You don't have access to this note" });
+                    }
                 }
             });
         })
@@ -163,19 +166,23 @@ module.exports = function(app, express, passport) {
             Note.findById(req.params.note_id, function(err, note) {
                 if (err) res.send(err);
 
-                if (req.user != null && req.user.id == note.author) {
-                    if (req.body.title) note.title = req.body.title;
-                    if (req.body.markdownBody) note.markdownBody = req.body.markdownBody;
+                var length = note.author.length;
+                for(var i = 0; i < length; i++){
+                    if (req.user != null && req.user.id == note.author[i]) {
+                        if (req.body.title) note.title = req.body.title;
+                        if (req.body.markdownBody) note.markdownBody = req.body.markdownBody;
 
-                    note.save(function(err) {
-                        if (err) {
-                            return res.send(err);
-                        } else {
-                            return res.json({ newTitle: req.body.title, newBody: req.body.markdownBody });
-                        }
-                    });
-                    //console.log("updated note");
+                        note.save(function(err) {
+                            if (err) {
+                                return res.send(err);
+                            } else {
+                                return res.json({ newTitle: req.body.title, newBody: req.body.markdownBody });
+                            }
+                        });
+                        //console.log("updated note");
+                    }
                 }
+                
             })
         })
 
