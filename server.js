@@ -75,6 +75,10 @@ app.get('/random', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/app/views/random.html'));
 });
 
+app.get('/test', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/app/views/testing.html'));
+})
+
 // START THE SERVER
 // =======================================
 var port = process.env.PORT || 8080;

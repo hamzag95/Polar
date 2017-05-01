@@ -20,7 +20,7 @@ html, body {
 #sidebar {
     height: 92vh;
     border-right: 2px solid #F7F6F5;
-    overflow: auto; 
+    overflow: auto;
 }
 
 label {
@@ -44,7 +44,7 @@ td {
     position:fixed;
     left:0px;
     bottom:0px;
-    height: 8vh;
+    height: 10%;
     background: #F7F6F5;
     padding-left: 20px;
 }

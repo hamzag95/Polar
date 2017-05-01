@@ -166,5 +166,6 @@ angular.module('mainCtrl', [])
        $scope.randomVal = Math.floor(Math.random() * (range/2)) + 1;
    }
 
+
     //vm.allNotes = Note.getAllNotes(vm.user.id);
 }]);

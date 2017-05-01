@@ -1,0 +1,59 @@
+
+@media (min-width: 992px) {
+    .button-collapse {
+        display:none;
+    }
+
+    main {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 992px) {
+    main {
+        margin-left: -300px;
+    }
+}
+
+.side-nav {
+    width: 300px;
+}
+
+#side {
+    width: 300px;
+    padding: 10px;
+    float: left;
+}
+
+ul {
+    list-style: none;
+    padding-left:10px;
+    margin-top: 0px;
+}
+
+.note {
+    border-top: 1px solid #e7e7e7;
+    padding: 20px 2px 20px 2px;
+}
+
+html, body {
+    width: 100%;
+}
+
+header {
+    width: 100%;
+}
+
+main {
+    float: left;
+}
+
+nav {
+    width: 100%;
+    height: 40px;
+    background-color: #ee6e73;
+}
+
+nav.top-nav a.page-title {
+
+}
