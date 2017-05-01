@@ -22,6 +22,47 @@ module.exports = function(app, express, passport) {
     })
     */
 
+    apiRouter.get('/users/:user_id/share', function(req,res) {
+        var friend = 'joejamalab@gmail.com'
+        var notec = '5902a5922b938e2dd4453897'
+        User.findOne( { 'email': friend}, function (err, user) {
+          if (err) return res.send(err);
+          // return that user
+
+
+          Note.findOne( { _id: notec }, function(err, note) {
+
+              var there = false;
+              var length = note.author.length;
+              for (var i = 0; i < length; i++) {
+                if (user.id == (note.author[i])) {
+                  //note.author.splice(i, 1);
+                  there = true;
+                }
+
+              }
+
+              if (!there) {
+                note.author.push(user.id);
+              }
+
+              note.save(function(err) {
+                  if (err) {
+                      return res.send(err);
+                  } else {
+                      return res.json(note);
+                  }
+              });
+
+
+          });
+
+        });
+
+
+
+    });
+
     apiRouter.get('/users/', function(req, res) {
         res.json(req.user);
     });

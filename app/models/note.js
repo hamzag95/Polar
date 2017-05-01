@@ -5,7 +5,7 @@ var User = require('./user');
 var noteSchema = new Schema ({
     title: String,
     tags: [String],
-    author: String,
+    author: [String],
     markdownBody: String,
     htmlBody: String,
     dateCreated: { type: Date, default: Date.now },
