@@ -21,7 +21,6 @@
 
 #side {
     width: 300px;
-    padding: 10px;
     float: left;
 }
 
@@ -46,6 +45,7 @@ header {
 
 main {
     float: left;
+    margin-left: 15px;
 }
 
 nav {
@@ -56,6 +56,10 @@ nav {
 
 nav.top-nav a.page-title {
 
+}
+
+.container {
+    width: 100%;
 }
 
 .nav-wrapper {
