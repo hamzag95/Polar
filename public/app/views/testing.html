@@ -30,6 +30,7 @@
     	<!-- CSS  -->
     	<!-- load bootstrap from CDN and custom CSS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <link rel="stylesheet" href="assets/css/test.css">
         <link rel="stylesheet" href="assets/css/main.css">
         <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -67,25 +68,25 @@
     <body ng-app="polarApp" ng-controller="mainController as main">
         <header>
             <nav class="top-nav">
-                <div class="nav-wrapper">
-                    <a class="brand-logo center">Polar</a>
-                    <ul class="left hide-on-med-and-down">
-                        <li><a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></li>
-                    </ul>
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a class="brand-logo center">POLAR</a>
+                    </div>
                 </div>
             </nav>
-        </header>
 
-        <div id="side" class="container">
+            <div class="container">
+                <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+            </div>
+
             <ul id="slide-out" class="side-nav fixed" style="transform: translateX(0%);">
                 <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes">{{ note.title }}</li>
             </ul>
-        </div>
+        </header>
 
         <main>
             <div class="container" id="editor" ng-show="noteSelected">
                 <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
-
 
                 <textarea id="textArea" simplemde='{ autofocus: true, spellChecker: false, tabSize: 4, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
             </div>

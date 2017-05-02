@@ -94,7 +94,6 @@ input {
 }
 
 input[type='text']:focus {
-    border-bottom: 5px solid #FF7373;
 }
 
 #snowflake {
