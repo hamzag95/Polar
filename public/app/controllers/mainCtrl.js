@@ -11,9 +11,54 @@ angular.module('mainCtrl', [])
     $scope.noteSelected = false;
     var timeout = null;
 
+    String.prototype.replaceAll = function (find, replace) {
+            var str = this;
+            return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+    };
+
+    var replace = function(term, definition) {
+        console.log(term);
+        $scope.currentNote.markdownBody = $scope.currentNote.markdownBody.replaceAll(term, term.substring(1, term.length - 1) + "—" + definition);
+    }
+
+
+    var define = function(term) {
+        var word = term.substring(1, term.length - 1);
+        word.replace(/\ /g, '%20');
+
+        url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/"+word+"?key=730039c6-8572-4885-a778-43fd75c70e5e";
+        $.get(url, function(data) {
+            var textContent = "";
+            var definition = data.getElementsByTagName('dt')[0]
+            if (definition != undefined)
+                textContent = definition.textContent;
+            console.log(textContent);
+            replace(term, textContent);
+        })
+    }
+
     var saveUpdates = function() {
         if ($scope.noteSelected == false) { return; }
 
+        var splitDefinitions = $scope.currentNote.markdownBody.split('?');
+        var toDefine = $scope.currentNote.markdownBody.match(/\?.+\?/g);
+        console.log(toDefine);
+
+        if (toDefine != null && toDefine.length > 0)
+            for (var i = 0; i < toDefine.length; i++) {
+                var word = toDefine[i];
+
+                console.log(word);
+                define(word);
+            }
+
+
+
+
+
+        setTimeout(function(){
+                console.log('after');
+        },5000);
         var splitString = $scope.currentNote.markdownBody.split('\n');
         //console.log(splitString);
 
@@ -67,7 +112,7 @@ angular.module('mainCtrl', [])
         }
     };
 
-    $scope.$watch('currentNote.markdownBody', debounceSaveUpdates);
+    $scope.$watch('currentNote.markdownBody', saveUpdates);
     $scope.$watch('currentNote.title', debounceSaveUpdates);
 
     $scope.selectNote = function(note) {
