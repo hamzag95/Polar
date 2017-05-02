@@ -38,6 +38,13 @@ nav {
     box-shadow: none;
 }
 
+.brand-logo {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: default;
+}
+
 .container {
     width: 100%;
 }
@@ -46,6 +53,7 @@ nav {
 }
 
 #slide-out {
+    height: calc(100% - 64px);
     margin-top: 64px;
 }
 
@@ -67,5 +75,30 @@ a.button-collapse.top-nav {
 @media all and (min-width:321px) and (max-width: 992px) {
     #slide-out {
         margin-top: 0px;
+        height: 100%;
     }
+}
+
+#search {
+    padding-left: 20px;
+    padding-top: 15px;
+    width: 225px;
+}
+
+.container {
+    max-width: none;
+}
+
+#user {
+    font-size: 16px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 5px 0px 10px 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e7e7e7;
+}
+
+#user p {
+    margin-top: 5px;
 }

@@ -79,14 +79,41 @@
                 <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
             </div>
 
-            <ul id="slide-out" class="side-nav fixed" style="transform: translateX(0%);">
-                <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes">{{ note.title }}</li>
-            </ul>
+            <div id="slide-out" class="side-nav fixed">
+                <ul>
+                    <li>
+                        <span>
+                            <label id="search"><input ng-model="searchText" placeholder="Search"></label>
+                            <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
+                        </span>
+                    </li>
+                    <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes">{{ note.title }}</li>
+                </ul>
+
+                <div id="user">
+                    <p>{{ user.name }}</p>
+                    <a href="/logout" target="_self" class="">Logout</a>
+                </div>
+            </div>
+
         </header>
 
         <main>
             <div class="container" id="editor" ng-show="noteSelected">
                 <input type="text" name="" value="" ng-model="currentNote.title" placeholder="Title">
+
+                <div class="fixed-action-btn horizontal click-to-toggle">
+                    <a class="btn-floating btn-large teal lighten-3">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul>
+                        <li><a class="btn-floating red" href="#modal1"><i class="material-icons">insert_chart</i></a></li>
+                        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                        <li><a id="dltNoteBtn" href="#modal2" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2"><i class="material-icons">delete</i></a></li>
+                    </ul>
+                </div>
 
                 <textarea id="textArea" simplemde='{ autofocus: true, spellChecker: false, tabSize: 4, toolbar: false }' ng-model="currentNote.markdownBody"></textarea>
             </div>
