@@ -9,10 +9,6 @@
     }
 }
 
-@media (max-width: 992px) {
-
-}
-
 footer {
       padding-left: 300px;
 }
@@ -51,7 +47,6 @@ nav {
 
 #slide-out {
     margin-top: 64px;
-    position: absolute;
 }
 
 a.button-collapse.top-nav {
@@ -67,4 +62,10 @@ a.button-collapse.top-nav {
     font-size: 36px;
     z-index: 2;
     color: white;
+}
+
+@media all and (min-width:321px) and (max-width: 992px) {
+    #slide-out {
+        margin-top: 0px;
+    }
 }
