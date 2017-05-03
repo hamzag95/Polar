@@ -22,6 +22,10 @@ ul {
 .note {
     border-top: 1px solid #e7e7e7;
     padding: 10px 0px 10px 10px;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: pointer;
 }
 
 html, body {
@@ -63,7 +67,7 @@ a.button-collapse.top-nav {
     text-align: center;
     height: 48px;
     width: 48px;
-    left: 2%;
+    left: 0px;
     top: 0;
     float: none;
     margin-left: 1.5rem;
@@ -76,6 +80,10 @@ a.button-collapse.top-nav {
     #slide-out {
         margin-top: 0px;
         height: 100%;
+    }
+
+    .side-nav a {
+        padding: 0;
     }
 }
 
@@ -101,4 +109,14 @@ a.button-collapse.top-nav {
 
 #user p {
     margin-top: 5px;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: default;
+}
+
+a.brand-logo.center {
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 2.8rem;
 }

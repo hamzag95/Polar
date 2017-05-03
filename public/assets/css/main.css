@@ -128,5 +128,6 @@ input[type='text']:focus {
 }
 
 .selected {
-    background-color: #f6f6f6;
+    background-color: #ef9a9a;
+    color: white;
 }
