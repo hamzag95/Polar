@@ -66,6 +66,32 @@
 
     </head>
     <body ng-app="polarApp" ng-controller="mainController as main">
+        <div ng-if="!checkLoggedIn">
+
+            <div class="container">
+                <div class="row">
+                    <img src="assets\img\63341.jpg" class="img-responsive" id="snowflake">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <h1 id="logo"> POLAR </h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <h3 style="height:200px" align="center" class="type"></h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="center">
+                    <a href="/auth/google" target="_self" class="waves-effect btn-large hoverable red accent-2"> Login </a>
+                </div>
+            </div>
+        </div>
 
         <div ng-show="checkLoggedIn">
             <header>
@@ -146,6 +172,17 @@
 
         <script type="text/javascript">
             $(".button-collapse").sideNav();
+
+            $(function(){
+                $(".type").typed({
+                    strings: [
+                        "Keep grocery lists",
+                        "Do your homework",
+                        "Write a novel",
+                        "Organize your life"
+                    ]
+                })
+            })
 
             $(document).ready(function() {
               $('.modal').modal();

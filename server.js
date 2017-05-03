@@ -63,7 +63,7 @@ require('./app/routes/passportRoutes')(app, passport);
 // SEND USERS TO FRONTEND ----------------
 // has to be registered after API routes
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/app/views/home.html'));
+    res.sendFile(path.join(__dirname + '/public/app/views/testing.html'));
 });
 
 // route for home page
