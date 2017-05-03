@@ -88,7 +88,7 @@
 
             <div class="row">
                 <div class="center">
-                    <a href="/auth/google" target="_self" class="waves-effect btn-large hoverable red accent-2"> Login </a>
+                    <a href="/auth/google" target="_self" class="waves-effect btn-large hoverable red lighten-3"> Login </a>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
                         <li>
                             <span>
                                 <label id="search"><input ng-model="searchText" placeholder="Search"></label>
-                                <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-2" ng-click="newNote()"><i class="material-icons">edit</i></a>
+                                <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-3" ng-click="newNote()"><i class="material-icons">edit</i></a>
                             </span>
                         </li>
                         <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes" ng-class="{selected: note._id === currentNote._id}">{{ note.title }}</li>
@@ -176,16 +176,18 @@
             $(function(){
                 $(".type").typed({
                     strings: [
-                        "Keep grocery lists",
+                        "Make shopping lists",
                         "Do your homework",
-                        "Write a novel",
-                        "Organize your life"
-                    ]
+                        "Write poetry",
+                        "Organize your life",
+                        "Remember things"
+                    ],
+                    loop: true
                 })
             })
 
             $(document).ready(function() {
-              $('.modal').modal();
+                $('.modal').modal();
             });
         </script>
     </body>
