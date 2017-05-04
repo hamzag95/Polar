@@ -52,10 +52,6 @@ angular.module('mainCtrl', [])
                 define(word);
             }
 
-
-
-
-
         setTimeout(function(){
                 console.log('after');
         },5000);

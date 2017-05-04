@@ -71,7 +71,7 @@ nav {
 
 a.button-collapse.top-nav {
     line-height: 55px;
-    position: absolute;
+    position: fixed;
     text-align: center;
     height: 48px;
     width: 48px;
@@ -80,7 +80,7 @@ a.button-collapse.top-nav {
     float: none;
     margin-left: 1.5rem;
     font-size: 36px;
-    z-index: 1000;
+    z-index: 998;
     color: white;
 }
 
