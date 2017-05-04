@@ -99,7 +99,7 @@ input[type='text']:focus {
     display: block;
     margin: auto;
     width: 10%;
-    padding-top: 100px;
+    padding-top: 3%;
 }
 
 #logo{
@@ -121,6 +121,10 @@ input[type='text']:focus {
 #horLine{
     padding-top: 20px;
 
+}
+
+h3 {
+    height: 100px;
 }
 
 .editor-statusbar {
