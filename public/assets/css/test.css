@@ -65,12 +65,12 @@ nav {
 }
 
 #slide-out {
-    height: calc(100% - 64px);
-    margin-top: 64px;
+    height: calc(100% - 56px);
+    margin-top: 56px;
 }
 
 a.button-collapse.top-nav {
-    line-height: 65px;
+    line-height: 55px;
     position: absolute;
     text-align: center;
     height: 48px;
@@ -80,7 +80,7 @@ a.button-collapse.top-nav {
     float: none;
     margin-left: 1.5rem;
     font-size: 36px;
-    z-index: 2;
+    z-index: 1000;
     color: white;
 }
 
@@ -136,4 +136,11 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]) 
   -webkit-box-shadow: 0 1px 0 0 #ef9a9a;
   -moz-box-shadow: 0 1px 0 0 #ef9a9a;
   box-shadow: 0 1px 0 0 #ef9a9a;
+}
+
+@media only screen and (min-width: 601px) {
+    nav {
+        height: 56px;
+        line-height: 56px;
+    }
 }
