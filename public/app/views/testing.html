@@ -118,7 +118,7 @@
                                 <a id="newNoteBtn" class="waves-effect btn btn-floating btn-medium hoverable red lighten-3" ng-click="newNote()"><i class="material-icons">edit</i></a>
                             </span>
                         </li>
-                        <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes" ng-class="{selected: note._id === currentNote._id}">{{ note.title }}</li>
+                        <li class="note" ng-click="selectNote(note)" ng-repeat="note in allNotes | filter:searchText" ng-class="{selected: note._id === currentNote._id}">{{ note.title }}</li>
                     </ul>
 
                     <div id="user">
