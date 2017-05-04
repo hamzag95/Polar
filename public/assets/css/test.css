@@ -42,6 +42,11 @@ html, body {
 
 main {
     margin-left: 5px;
+    height: calc(100% - 56px);
+}
+
+#logged-in {
+    height: 100%;
 }
 
 nav {
@@ -143,4 +148,17 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]) 
         height: 56px;
         line-height: 56px;
     }
+
+    .navbar-fixed {
+        height: 56px;
+    }
+}
+
+.editor-preview {
+
+}
+
+.container .row {
+    margin-left: 0;
+    margin-right: 0;
 }
